@@ -147,7 +147,7 @@ input, select, textarea {
 		}
 
 	h1 {
-		font-size: 3em;
+		font-size: 2em;
 		line-height: 1.5em;
 	}
 
@@ -2135,15 +2135,18 @@ input, select, textarea {
 
 		.image.avatar {
 			border-radius: 100%;
+			align-items: center;
 		}
 
 			.image.avatar:before {
 				display: none;
+				align-items: center;
 			}
 
 			.image.avatar img {
 				border-radius: 100%;
-				width: 100%;
+				max-width: 150px;
+				align-items: center;
 			}
 
 /* List */
