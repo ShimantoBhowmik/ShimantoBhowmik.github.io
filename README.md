@@ -1,3 +1,3 @@
-#Personal Website
+# _Personal Website_
 
-##This is my personal website, hosted through Github pages.
+## This is my personal website, hosted through Github pages.
