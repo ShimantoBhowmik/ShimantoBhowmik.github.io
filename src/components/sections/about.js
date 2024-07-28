@@ -136,19 +136,14 @@ const About = () => {
         <StyledText>
         <div>
         <p>
-            Hello! My name is Shimanto Bhowmik, and I’m passionate about creating impactful digital experiences. My journey in software development began with building a learning platform for my niece, enhancing her engagement with math and teaching me a lot about JavaScript and HTML/CSS.
+            Hello! My name is Shimanto Bhowmik, and I’m passionate about creating things that live behind the Internet. My journey in software development began with building a learning platform for my niece, enhancing her engagement with math and teaching me a lot about JavaScript and HTML/CSS.
+        </p>
+        <p>
+        Fast-forward to today, and I’ve had the privilege of working at a <a href="https://developer.amazon.com/en/alexa" target='_blank'>big tech company</a>, <a href="https://sageai.dev" target='_blank'> an innovative startup</a>, and engaging in multiple <a href="https://www.rit.edu" target='_blank'>research opportunities</a>. My main area of interest these days is to build scalable and efficient systems that can help people in their daily lives using AI and ML.
         </p>
 
         <p>
-            Today, I’ve had the privilege of working at <a href="https://developer.amazon.com/en/alexa">Amazon Alexa</a>, where I developed model deployment pipelines and automated testing tools for Large Language Models, improving efficiency and reliability.
-        </p>
-
-        <p>
-            At <a href="https://sageai.dev">Sage AI</a>, I thrived in a fast-paced startup environment, gaining valuable experience in the software development lifecycle and customer-facing product creation.
-        </p>
-
-        <p>
-            My research at <a href="https://www.rit.edu">RIT</a> includes projects on secret sharing and the effectiveness of R as a data science language, deepening my understanding of software development.
+        I also recently launched a <a href="https://www.youtube.com/@scarstark" target='_blank'>YouTube channel</a> where I play video games for fun. Consider dropping a follow : )
         </p>
 
         <p>My technical skills extend far beyond these experiences, and I am always eager to learn and innovate.</p>
