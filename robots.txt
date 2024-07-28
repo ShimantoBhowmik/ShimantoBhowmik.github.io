@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://shimantobhowmik.github.io/sitemap-index.xml
+Host: https://shimantobhowmik.github.io
