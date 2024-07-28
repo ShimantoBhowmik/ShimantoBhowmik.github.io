@@ -59,36 +59,26 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, []);
 
-  const one = <h1>Namaste! My name is</h1>;
-  const two = <h2 className="big-heading">Chandrika Deb</h2>;
-  const three = <h3 className="medium-heading">MBA | Marketing Enthusiast | Freelance Blogger</h3>;
+  const one = <h1>Hi! My name is</h1>;
+  const two = <h2 className="big-heading">Shimanto Bhowmik.</h2>;
+  const three = <h3 className="medium-heading">I build some. And then some.</h3>;
   const four = (
     <>
-      <p>
-        <b>Glad to e-meet you!</b>
-      </p>
 
       <p>
-        I am Chandrika Deb, an alumnus of {' '} <a href="http://www.iimrohtak.ac.in">
-        IIM Rohtak</a> {' '} and {' '} <a href="https://www.bitmesra.ac.in">BIT Mesra</a> {' '} currently spearheading impactful marketing initiatives at {' '}
-        <a href="https://www.tatasteel.com">Tata Steel</a>.
-      </p>
-
-
-      <p>
-        When not decoding the customer journey, you can find me sketching on {' '}
-        <a href="https://pin.it/4W1Rxtj">Pinterest</a> {' '} or writing technical blogs for {' '}
-        <a href="https://www.lambdatest.com">LambdaTest</a> {' '} and other freelance clients.
+        I am a software engineer specializing in building exceptional websites, applications, and everything in between.
+        I have recently been very interested in AI and Machine Learning. Currently I am working with Large Language Models as an SDE Intern at{' '}
+        <a href="https://en.wikipedia.org/wiki/Amazon_(company)">Amazon.</a> {' '}
       </p>
     </>
   );
   const five = (
     <a
       className="email-link"
-      href="https://chandrikadeb7.gumroad.com"
+      href="https://https://www.linkedin.com/in/shimantobhowmik/"
       target="_blank"
       rel="noreferrer">
-      Check out my products!
+      Check out my Linkedin!
     </a>
   );
 

@@ -2,12 +2,12 @@ const config = require('./src/config');
 
 module.exports = {
   siteMetadata: {
-    title: 'Chandrika Deb',
+    title: 'Shimanto Bhowmik',
     description:
-      'Chandrika Deb is an IIM alumnus who spearheads marketing initiatives at Tata Steel and is also a freelance tech blogger.',
-    siteUrl: 'https://chandrikadeb7.github.io', // No trailing slash allowed!
+      'Shimanto Bhowmik is a Software Engineer currently studying his undergrad at Rochester Institute of Technology.',
+    siteUrl: 'https://shimantobhowmik.github.io', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
-    twitterUsername: '@chandrikadeb7',
+    twitterUsername: '@@bmikshimanto',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -20,8 +20,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'Chandrika Deb',
-        short_name: 'Chandrika Deb',
+        name: 'Shimanto Bhowmik',
+        short_name: 'Shimanto Bhowmik',
         start_url: '/',
         background_color: config.colors.darkNavy,
         theme_color: config.colors.navy,
