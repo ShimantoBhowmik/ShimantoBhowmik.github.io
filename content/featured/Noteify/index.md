@@ -1,5 +1,5 @@
 ---
-date: '2'
+date: '1'
 title: 'Note-ify'
 cover: './noteify.png'
 external: 'https://noteify.streamlit.app/'
@@ -12,5 +12,5 @@ tech:
   - Streamlit
 ---
 
-An application for doing semantic search on academic notes.
+An application designed to perform semantic searches on academic notes.
 
