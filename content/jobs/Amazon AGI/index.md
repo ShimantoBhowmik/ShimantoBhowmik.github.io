@@ -1,7 +1,7 @@
 ---
 date: '2024-07-27'
 title: 'Software Development Engineer Intern'
-company: 'Amazon Alexa'
+company: 'Amazon AGI'
 location: 'Seattle, WA.'
 range: 'May 2024 - September 2024'
 url: 'https://developer.amazon.com/en/alexa'
