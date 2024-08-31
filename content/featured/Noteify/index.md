@@ -1,7 +1,7 @@
 ---
-date: '1'
-title: 'Noteify'
-cover: './math-mania.png'
+date: '2'
+title: 'Note-ify'
+cover: './noteify.png'
 external: 'https://noteify.streamlit.app/'
 tech:
   - Langchain
