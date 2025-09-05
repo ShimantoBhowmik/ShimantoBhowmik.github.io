@@ -1,5 +1,5 @@
 ---
-date: '1'
+date: '3'
 title: 'Note-ify'
 cover: './noteify.png'
 external: 'https://noteify.streamlit.app/'
