@@ -139,7 +139,7 @@ const About = () => {
             Hello! My name is Shimanto Bhowmik, and I’m passionate about creating things that live behind the Internet. My journey in software development began with building a learning platform for my niece, enhancing her engagement with math and teaching me a lot about JavaScript and HTML/CSS.
         </p>
         <p>
-        Fast-forward to today, and I’ve had the privilege of working at a <a href="https://developer.amazon.com/en/alexa" target='_blank'>big tech company</a>, <a href="https://sageai.dev" target='_blank'> an innovative startup</a>, and engaging in multiple <a href="https://www.rit.edu" target='_blank'>research opportunities</a>. My main area of interest these days is to build scalable and efficient systems that can help people in their daily lives using AI and ML.
+        Fast-forward to today, and I have had the privilege of working at a <a href="https://developer.amazon.com/en/alexa" target='_blank'>big tech company</a>, <a href="https://sageai.dev" target='_blank'> an innovative startup</a>, and engaging in multiple <a href="https://ai.stanford.edu/" target='_blank'>research opportunities</a>. My main area of interest these days is to build scalable and efficient systems that can help people in their daily lives using AI and ML.
         </p>
 
         <p>

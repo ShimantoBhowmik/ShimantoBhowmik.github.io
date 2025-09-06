@@ -64,12 +64,11 @@ const Hero = () => {
   const three = <h3 className="medium-heading">I build some. And then some.</h3>;
   const four = (
     <>
-
-      <p>
-        I am a software engineer specializing in building exceptional websites, applications, and everything in between.
-        I have recently been very interested in AI and Machine Learning. Currently I am working with Large Language Models as an SDE Intern at{' '}
-        <a href="https://en.wikipedia.org/wiki/Amazon_(company)">Amazon.</a> {' '}
-      </p>
+        <p>
+        I’m a software engineer who builds thoughtful websites, applications and ML-powered experiences. 
+        Lately I have been deep in AI/ML shipping with LLMs (Large Language Models). My background includes 
+        <strong> 3 Amazon AGI </strong> internships, a <strong>startup</strong> hustle and <strong>Stanford </strong> research.
+        </p>
     </>
   );
   const five = (
