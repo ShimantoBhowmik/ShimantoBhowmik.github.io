@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-13T20:00:00+00:00",
+  "generatedAt": "2026-10-13T22:00:00+00:00",
   "title": "Design System: Shimanto Bhowmik",
   "extensions": {
     "colorMeta": {
@@ -111,9 +111,9 @@
       }
     },
     "typographyMeta": {
-      "display": {
-        "displayName": "Display",
-        "purpose": "The Bangla name in the hero only, green, full-bleed matra through its headstroke."
+      "statement": {
+        "displayName": "Statement",
+        "purpose": "The hero's one sentence of what he does, Ink, max 19ch, balanced; the largest type on the page."
       },
       "headline": {
         "displayName": "Headline",
@@ -125,11 +125,19 @@
       },
       "lede": {
         "displayName": "Lede",
-        "purpose": "The one-sentence introduction at the top of the hero."
+        "purpose": "The hero's supporting sentence under the statement, Ink Two, max 62ch."
+      },
+      "name": {
+        "displayName": "Name",
+        "purpose": "The h1 in the hero bar, Ink."
+      },
+      "signature": {
+        "displayName": "Signature",
+        "purpose": "The Bangla name beside the h1, Bottle Green, on its baseline."
       },
       "title": {
         "displayName": "Title",
-        "purpose": "Place names, hero column names, English section titles."
+        "purpose": "Place names, English section titles."
       },
       "value": {
         "displayName": "Value",
@@ -145,7 +153,11 @@
       },
       "stop": {
         "displayName": "Stop",
-        "purpose": "Timeline stop names, Ink, angled above the track."
+        "purpose": "Timeline stop names, Ink, angled above the track below 1200px and listed on phones."
+      },
+      "stop-wide": {
+        "displayName": "Stop Wide",
+        "purpose": "Timeline stop names at 1200px and wider."
       },
       "stop-current": {
         "displayName": "Stop Current",
@@ -161,7 +173,7 @@
       {
         "name": "ease-out",
         "value": "cubic-bezier(0.16, 1, 0.3, 1)",
-        "purpose": "Easing for every line motion: draw, drop, stem thickening."
+        "purpose": "Easing for stem thickening, stop fill and stop arrival."
       },
       {
         "name": "link-underline",
@@ -174,24 +186,24 @@
         "purpose": "Stem width 1.5px to 4px on hover or focus-within."
       },
       {
-        "name": "hang-in",
-        "value": "700ms, opacity 0 and translateY(-0.05em) to rest",
-        "purpose": "Bangla name glyphs appear first on load."
-      },
-      {
         "name": "draw",
-        "value": "1200ms from 380ms, scaleX(0) from left",
-        "purpose": "Matra drawn across the name last, once, on load."
+        "value": "1600ms linear after 250ms (--draw, --draw-delay), scale 0 to 1 from the left",
+        "purpose": "The timeline track draws left to right at constant speed, once, on load."
       },
       {
-        "name": "drop",
-        "value": "800ms from 900ms + 90ms per column, scaleY(0) from top",
-        "purpose": "Hero stems drop from the matra."
+        "name": "stop-arrive",
+        "value": "420ms ease-out, opacity 0 and 6px down to rest, delay = draw-delay + t * draw",
+        "purpose": "Each timeline stop arrives when the line reaches its position t (0-1)."
+      },
+      {
+        "name": "years-arrive",
+        "value": "600ms ease-out after draw-delay + draw",
+        "purpose": "The year scale fades in when the draw ends."
       },
       {
         "name": "reduced-motion",
-        "value": "prefers-reduced-motion: no-preference only",
-        "purpose": "Load motion runs only when the user has not asked for reduced motion."
+        "value": "prefers-reduced-motion: no-preference and min-width 641px only",
+        "purpose": "Load motion runs only on desktop widths when the user has not asked for reduced motion; everything is visible without it."
       },
       {
         "name": "stop-fill",
@@ -205,10 +217,6 @@
         "value": "1200px"
       },
       {
-        "name": "hero-two-col",
-        "value": "1080px"
-      },
-      {
         "name": "stack",
         "value": "860px"
       },
@@ -219,17 +227,13 @@
       {
         "name": "timeline-vertical",
         "value": "640px"
-      },
-      {
-        "name": "hero-one-col",
-        "value": "560px"
       }
     ],
     "fonts": {
       "bangla": "Anek Bangla 600 subset (src/fonts/anek-bangla-subset.woff2), unicode-range U+0020, U+0980-09FF, font-display block; subset includes U+0020 so it owns the line box. Rebuild with scripts/subset-bangla.py; scripts/check-bangla.mjs fails the build on uncovered characters.",
       "latin": "@fontsource-variable/anek-latin (wght axis)"
     },
-    "build": "A monthly scheduled rebuild (GitHub Actions cron, 1st of the month) keeps the Work timeline's track ending at today."
+    "build": "A monthly scheduled rebuild (GitHub Actions cron, 1st of the month) keeps the timeline's track ending at today."
   },
   "components": [
     {
@@ -241,12 +245,20 @@
       "css": ".ds-body{font-family:var(--font-latin);font-size:1.0625rem;line-height:1.55;color:var(--ink-2,#434c47)}.ds-link{color:var(--ink,#121614);text-decoration-line:underline;text-decoration-color:var(--rule,#d3d8d4);text-decoration-thickness:1.5px;text-underline-offset:0.22em;transition:text-decoration-color 160ms ease-out}.ds-link:hover{text-decoration-color:var(--green,#006a4e)}.ds-link:focus-visible{outline:2px solid var(--green,#006a4e);outline-offset:3px;border-radius:2px}"
     },
     {
-      "name": "Navigation",
+      "name": "Hero Bar",
       "kind": "nav",
-      "refersTo": "link-primary",
-      "description": "Top-right row of text links; the primary action carries a 3px green underline.",
-      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-primary\" href=\"#\">Email me</a><a href=\"#\">Resume</a><a href=\"#\">GitHub</a><a href=\"#\">LinkedIn</a></nav>",
-      "css": ".ds-nav{display:flex;flex-wrap:wrap;gap:8px 28px;font-family:var(--font-latin);font-size:1.0625rem;font-weight:500}.ds-nav a{color:var(--ink,#121614);text-decoration-line:underline;text-decoration-color:var(--rule,#d3d8d4);text-decoration-thickness:1.5px;text-underline-offset:0.22em;transition:text-decoration-color 160ms ease-out}.ds-nav a:hover{text-decoration-color:var(--green,#006a4e)}.ds-nav a:focus-visible{outline:2px solid var(--green,#006a4e);outline-offset:3px;border-radius:2px}.ds-nav .ds-nav-primary{font-weight:650;text-decoration-color:var(--green,#006a4e);text-decoration-thickness:3px}"
+      "refersTo": "hero-name",
+      "description": "The h1 name with its green Bangla signature at the left; text links at the right, the primary action carrying a 3px green underline.",
+      "html": "<div class=\"ds-bar\"><h1 class=\"ds-who\">Shimanto Bhowmik <span class=\"ds-sig\" lang=\"bn\">সীমান্ত ভৌমিক</span></h1><nav class=\"ds-nav\"><a class=\"ds-nav-primary\" href=\"#\">Email me</a><a href=\"#\">Resume</a><a href=\"#\">GitHub</a><a href=\"#\">LinkedIn</a></nav></div>",
+      "css": ".ds-bar{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px 32px;font-family:var(--font-latin);color:var(--ink,#121614)}.ds-who{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:14px;margin:0;font-size:1.25rem;font-weight:650;line-height:1.2;letter-spacing:-0.005em}.ds-sig{font-family:var(--font-bangla);font-size:1.375rem;font-weight:600;color:var(--green,#006a4e)}.ds-nav{display:flex;flex-wrap:wrap;gap:8px 28px;font-size:1.0625rem;font-weight:500}.ds-nav a{color:var(--ink,#121614);text-decoration-line:underline;text-decoration-color:var(--rule,#d3d8d4);text-decoration-thickness:1.5px;text-underline-offset:0.22em;transition:text-decoration-color 160ms ease-out}.ds-nav a:hover{text-decoration-color:var(--green,#006a4e)}.ds-nav a:focus-visible{outline:2px solid var(--green,#006a4e);outline-offset:3px;border-radius:2px}.ds-nav .ds-nav-primary{font-weight:650;text-decoration-color:var(--green,#006a4e);text-decoration-thickness:3px}"
+    },
+    {
+      "name": "Hero Statement",
+      "kind": "custom",
+      "refersTo": "hero-statement",
+      "description": "The one large sentence in Ink, then the lede in Ink Two; no green, no line.",
+      "html": "<div class=\"ds-hs\"><p class=\"ds-st\">I build the infrastructure machine learning ships on.</p><p class=\"ds-lede\">Experimentation platforms, model release pipelines and LLM evaluation, from Amazon AGI and Stanford AI Lab to security at AWS today.</p></div>",
+      "css": ".ds-hs{font-family:var(--font-latin)}.ds-st{max-width:19ch;margin:0;font-size:clamp(2.5rem,min(5.4vw,8.6vh),5.5rem);font-weight:600;line-height:1.02;letter-spacing:-0.025em;text-wrap:balance;color:var(--ink,#121614)}.ds-lede{max-width:62ch;margin:clamp(16px,2.2vh,28px) 0 0;font-size:clamp(1.25rem,0.95rem + 1.05vw,1.75rem);line-height:1.35;color:var(--ink-2,#434c47);text-wrap:pretty}"
     },
     {
       "name": "Section Head",
@@ -265,14 +277,6 @@
       "css": ".ds-entry{position:relative;display:grid;grid-template-columns:3fr 9fr;column-gap:24px;padding-block:32px;font-family:var(--font-latin);color:var(--ink,#121614)}.ds-entry::after{content:'';position:absolute;left:calc(25% + 6px);top:0;bottom:0;width:1.5px;background:var(--green,#006a4e)}.ds-entry::before{content:'';position:absolute;z-index:1;left:calc(25% + 6px);top:0;bottom:0;width:4px;background:var(--green,#006a4e);transform:scaleX(0.375);transform-origin:left center;opacity:0;transition:transform 220ms cubic-bezier(0.16,1,0.3,1),opacity 220ms cubic-bezier(0.16,1,0.3,1)}.ds-entry:hover::before,.ds-entry:focus-within::before,.ds-entry:focus-visible::before{transform:scaleX(1);opacity:1}.ds-entry:focus-visible{outline:none}.ds-body{padding-left:18px}.ds-org{margin:0;font-size:1.5rem;font-weight:600;line-height:1.2;letter-spacing:-0.01em}.ds-meta{margin:6px 0 0;font-size:0.875rem;color:var(--ink-3,#5c6661)}.ds-num{font-variant-numeric:tabular-nums lining-nums}.ds-focus{margin:0;max-width:44ch;font-size:1.1875rem;font-weight:600;line-height:1.3}.ds-detail{margin:10px 0 0;max-width:66ch;color:var(--ink-2,#434c47);line-height:1.55}.ds-results{display:flex;flex-wrap:wrap;gap:12px 40px;margin:18px 0 0}.ds-results div{display:flex;flex-direction:column-reverse}.ds-results dd{margin:0;font-size:1.375rem;font-weight:600;line-height:1.15;letter-spacing:-0.01em}.ds-results dt{font-size:0.875rem;color:var(--ink-3,#5c6661)}"
     },
     {
-      "name": "Hero Name",
-      "kind": "custom",
-      "refersTo": "hero-name",
-      "description": "The Bangla name with the matra fused through its headstroke; stems pass behind glyphs via a ground-coloured text-stroke knockout, roots painted above.",
-      "html": "<div class=\"ds-hero\"><div class=\"ds-name\"><span class=\"ds-glyphs\" lang=\"bn\">সীমান্ত ভৌমিক</span></div><ol class=\"ds-cols\"><li><span class=\"ds-col-org\">AWS</span></li><li><span class=\"ds-col-org\">FinPilot</span></li></ol></div>",
-      "css": ".ds-hero{--n:6rem;position:relative;font-family:var(--font-latin)}.ds-name{position:relative;font-family:var(--font-bangla);font-size:var(--n);font-weight:600;line-height:1;color:var(--green,#006a4e);white-space:nowrap}.ds-glyphs{position:relative;z-index:1;display:inline-block;margin-left:18px;-webkit-text-stroke:0.08em var(--ground,#f2f4f4);paint-order:stroke fill}.ds-name::after{content:'';position:absolute;inset-inline:0;z-index:2;top:calc(0.1815em - 0.014em);height:calc(0.278em - 0.1815em + 0.02em);background:currentColor}.ds-cols{display:grid;grid-template-columns:1fr 1fr;column-gap:24px;margin:24px 0 0;padding:0;list-style:none}.ds-cols li{position:relative;padding:0 8px 4px 18px}.ds-cols li::before,.ds-cols li::after{content:'';position:absolute;left:0;top:calc(-1 * (var(--n) * (1 - 0.278) + 24px));width:1.5px;background:var(--green,#006a4e);transition:width 220ms cubic-bezier(0.16,1,0.3,1)}.ds-cols li::before{bottom:0}.ds-cols li::after{z-index:2;height:calc(var(--n) * 0.08)}.ds-cols li:hover::before,.ds-cols li:hover::after{width:4px}.ds-col-org{font-size:1.5rem;font-weight:600;color:var(--ink,#121614)}"
-    },
-    {
       "name": "Ledger",
       "kind": "custom",
       "refersTo": "",
@@ -289,20 +293,20 @@
       "css": ".ds-email{display:inline-block;font-family:var(--font-latin);font-size:2.5rem;font-weight:600;line-height:1.1;letter-spacing:-0.02em;color:var(--ink,#121614);text-decoration-line:underline;text-decoration-color:var(--green,#006a4e);text-decoration-thickness:0.06em;text-underline-offset:0.16em}.ds-email:focus-visible{outline:2px solid var(--green,#006a4e);outline-offset:3px;border-radius:2px}"
     },
     {
-      "name": "Work Timeline",
+      "name": "Timeline",
       "kind": "custom",
       "refersTo": "timeline-stop",
-      "description": "Transit strip map of the career: a 10px green track at one time scale, ringed stops with angled names, a large current stop with a NOW tag, and soft-green branches for concurrent stints.",
-      "html": "<div class=\"ds-tl\"><ol class=\"ds-tl-stops\"><li class=\"ds-tl-stop\" style=\"--at:0%\"><a href=\"#\"><span class=\"ds-tl-label\">RIT Computer Science</span></a></li><li class=\"ds-tl-stop ds-tl-branch\" style=\"--at:30%;--span:35%\"><a href=\"#\"><span class=\"ds-tl-label\">Sage AI</span></a></li><li class=\"ds-tl-stop\" style=\"--at:55%\"><a href=\"#\"><span class=\"ds-tl-label\">Amazon AGI</span></a></li><li class=\"ds-tl-stop ds-tl-now\" style=\"--at:100%\"><a href=\"#\"><span class=\"ds-tl-label\">AWS Security</span></a><span class=\"ds-tl-tag\">Now</span></li></ol><ol class=\"ds-tl-years\"><li style=\"--at:0%\">2022</li><li style=\"--at:50%\">2024</li><li style=\"--at:100%\">2026</li></ol></div>",
-      "css": ".ds-tl{--angle:-40deg;--green-soft:color-mix(in oklab,var(--green,#006a4e) 32%,var(--ground,#f2f4f4));padding:130px 90px 0 20px;font-family:var(--font-latin);color:var(--ink,#121614)}.ds-tl ol{margin:0;padding:0;list-style:none}.ds-tl-stops{position:relative;height:64px}.ds-tl-stops::before{content:'';position:absolute;left:0;right:0;top:0;height:10px;border-radius:10px;background:var(--green,#006a4e);transform:translateY(-50%)}.ds-tl-stop{position:absolute;top:0;left:var(--at);width:var(--span,0)}.ds-tl-stop a{--dot:22px;--ring:4px;position:absolute;z-index:1;left:0;top:0;width:var(--dot);height:var(--dot);box-sizing:border-box;border:var(--ring) solid var(--ink,#121614);border-radius:50%;background:var(--ground,#f2f4f4);color:var(--ink,#121614);text-decoration:none;transform:translate(-50%,-50%);transition:background-color 160ms cubic-bezier(0.16,1,0.3,1),border-color 160ms cubic-bezier(0.16,1,0.3,1)}.ds-tl-label{position:absolute;left:50%;bottom:calc(100% + 6px);font-size:1.0625rem;font-weight:600;line-height:1;white-space:nowrap;transform-origin:left bottom;transform:rotate(var(--angle));transition:color 160ms cubic-bezier(0.16,1,0.3,1)}.ds-tl-stop a:hover,.ds-tl-stop a:focus-visible{border-color:var(--green,#006a4e);background:var(--green,#006a4e);outline:none}.ds-tl-stop a:hover .ds-tl-label,.ds-tl-stop a:focus-visible .ds-tl-label{color:var(--green,#006a4e)}.ds-tl-now a{--dot:40px;--ring:13px}.ds-tl-now .ds-tl-label{left:calc(50% + 16px);bottom:calc(50% + 16px);font-size:1.5rem;font-weight:700;letter-spacing:-0.01em}.ds-tl-tag{position:absolute;left:0;top:30px;font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--green,#006a4e);transform:translateX(-50%)}.ds-tl-branch::after{content:'';position:absolute;left:14px;right:0;top:5px;height:34px;border:0 solid var(--green-soft);border-width:0 0 6px 6px;border-bottom-left-radius:16px}.ds-tl-years{position:relative;height:1.25em;font-size:0.875rem;color:var(--ink-3,#5c6661);font-variant-numeric:tabular-nums lining-nums}.ds-tl-years li{position:absolute;left:var(--at);transform:translateX(-50%)}"
+      "description": "Transit strip map of the career closing the hero: a 10px green track at one time scale that draws left to right on load, ringed stops that arrive as the line reaches them, angled names, a large current stop with a NOW tag, and soft-green branches for concurrent stints.",
+      "html": "<div class=\"ds-tl\"><ol class=\"ds-tl-stops\"><li class=\"ds-tl-stop\" style=\"--at:0%;--t:0\"><a href=\"#\"><span class=\"ds-tl-label\">RIT Computer Science</span></a></li><li class=\"ds-tl-stop ds-tl-branch\" style=\"--at:30%;--span:35%;--t:0.3\"><a href=\"#\"><span class=\"ds-tl-label\">Sage AI</span></a></li><li class=\"ds-tl-stop\" style=\"--at:55%;--t:0.55\"><a href=\"#\"><span class=\"ds-tl-label\">Amazon AGI</span></a></li><li class=\"ds-tl-stop ds-tl-now\" style=\"--at:100%;--t:1\"><a href=\"#\"><span class=\"ds-tl-label\">AWS Security</span></a><span class=\"ds-tl-tag\">Now</span></li></ol><ol class=\"ds-tl-years\"><li style=\"--at:0%\">2022</li><li style=\"--at:50%\">2024</li><li style=\"--at:100%\">2026</li></ol></div>",
+      "css": ".ds-tl{--angle:-40deg;--draw:1600ms;--draw-delay:250ms;--green-soft:color-mix(in oklab,var(--green,#006a4e) 32%,var(--ground,#f2f4f4));padding:130px 90px 0 20px;font-family:var(--font-latin);color:var(--ink,#121614)}.ds-tl ol{margin:0;padding:0;list-style:none}.ds-tl-stops{position:relative;height:64px}.ds-tl-stops::before{content:'';position:absolute;left:0;right:0;top:0;height:10px;border-radius:10px;background:var(--green,#006a4e);transform:translateY(-50%)}.ds-tl-stop{position:absolute;top:0;left:var(--at);width:var(--span,0)}.ds-tl-stop a{--dot:22px;--ring:4px;position:absolute;z-index:1;left:0;top:0;width:var(--dot);height:var(--dot);box-sizing:border-box;border:var(--ring) solid var(--ink,#121614);border-radius:50%;background:var(--ground,#f2f4f4);color:var(--ink,#121614);text-decoration:none;transform:translate(-50%,-50%);transition:background-color 160ms cubic-bezier(0.16,1,0.3,1),border-color 160ms cubic-bezier(0.16,1,0.3,1)}.ds-tl-label{position:absolute;left:50%;bottom:calc(100% + 6px);font-size:1.125rem;font-weight:600;line-height:1;white-space:nowrap;transform-origin:left bottom;transform:rotate(var(--angle));transition:color 160ms cubic-bezier(0.16,1,0.3,1)}.ds-tl-stop a:hover,.ds-tl-stop a:focus-visible{border-color:var(--green,#006a4e);background:var(--green,#006a4e);outline:none}.ds-tl-stop a:hover .ds-tl-label,.ds-tl-stop a:focus-visible .ds-tl-label{color:var(--green,#006a4e)}.ds-tl-now a{--dot:40px;--ring:13px}.ds-tl-now .ds-tl-label{left:calc(50% + 16px);bottom:calc(50% + 16px);font-size:1.5rem;font-weight:700;letter-spacing:-0.01em}.ds-tl-tag{position:absolute;left:0;top:30px;font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--green,#006a4e);transform:translateX(-50%)}.ds-tl-branch::after{content:'';position:absolute;left:14px;right:0;top:5px;height:34px;border:0 solid var(--green-soft);border-width:0 0 6px 6px;border-bottom-left-radius:16px}.ds-tl-years{position:relative;height:1.25em;font-size:0.875rem;color:var(--ink-3,#5c6661);font-variant-numeric:tabular-nums lining-nums}.ds-tl-years li{position:absolute;left:var(--at)}@media (prefers-reduced-motion:no-preference){.ds-tl-stops::before{transform-origin:left center;animation:ds-draw var(--draw) linear var(--draw-delay) both}.ds-tl-stop{animation:ds-arrive 420ms cubic-bezier(0.16,1,0.3,1) calc(var(--draw-delay) + var(--t,0) * var(--draw)) both}.ds-tl-years{animation:ds-arrive 600ms cubic-bezier(0.16,1,0.3,1) calc(var(--draw-delay) + var(--draw)) both}}@keyframes ds-draw{from{scale:0 1}}@keyframes ds-arrive{from{opacity:0;translate:0 6px}}"
     }
   ],
   "narrative": {
     "northStar": "The Matra",
-    "overview": "One horizontal line, the matra, crosses the page and everything hangs from it, the way Bangla letters hang from their headstroke. The line is not drawn beside the type; it is the type. Every green rule on the page is the headstroke of a Bangla word, measured from the font and run edge to edge, and every vertical green line is a stem dropped from that headstroke down the edge of the content it carries. The one horizontal green line that is not a headstroke is the Work section's timeline track: a route line hung inside the section, measuring time at one scale. It is the world's line put to work, not a decorative stripe.\n\nThe world is light only, flat, cool paper and near-black ink with one bottle green (Bangladesh flag green) that owns every structural line. Type and line carry every value: there are no cards, icons, photographs, shadows or gradients, and depth comes only from flat overlap where a stem passes behind a letter. Density is moderate and editorial; results are set as figures on a strict tabular column, never as badges.\n\nMotion follows handwritten Bangla: the letters appear first, the headstroke is drawn across them last, once, on load, and the stems drop from it. Reading an entry thickens the stretch of stem beside it.",
+    "overview": "One horizontal line, the matra, crosses the page and everything hangs from it, the way Bangla letters hang from their headstroke. The line is not drawn beside the type; it is the type. Every green rule on the page is the headstroke of a Bangla word, measured from the font and run edge to edge, and every vertical green line is a stem dropped from that headstroke down the edge of the content it carries. The one horizontal green line that is not a headstroke is the career timeline's track, which closes the hero: a route line inside the page margins, measuring time at one scale. It is the world's line put to work, not a decorative stripe, and it is the hero's only green line.\n\nThe world is light only, flat, cool paper and near-black ink with one bottle green (Bangladesh flag green) that owns every structural line. Type and line carry every value: there are no cards, icons, photographs, shadows or gradients, and there is no depth at all. Density is moderate and editorial; results are set as figures on a strict tabular column, never as badges.\n\nMotion is the line being drawn: on load the timeline track draws left to right at a constant speed, once, and each stop arrives as the line reaches it. Reading an entry thickens the stretch of stem beside it.",
     "keyCharacteristics": [
       "One green, used only for structural lines, the Bangla words those lines belong to, and emphasis underlines.",
-      "Every full-bleed horizontal green line is a Bangla headstroke; every vertical green line is a stem hanging from one; the Work timeline's track is the only other green line, and it hangs inside its section.",
+      "Every full-bleed horizontal green line is a Bangla headstroke; every vertical green line in a section is a stem hanging from one; the timeline's track (turned vertical on phones) is the only other green line, and it lives in the hero.",
       "A single axis: the left edge of the content column, with all read content indented 18px off its stem.",
       "Two families: Anek Bangla (subset) for Bangla, Anek Latin for all Latin; tabular lining figures for every date and number.",
       "Flat. No borders between items, no shadows, no gradients, no icons, no imagery."
@@ -330,28 +334,28 @@
       },
       {
         "name": "The Headstroke Rule",
-        "body": "Every full-bleed horizontal green line is a Bangla word's headstroke, cut to the measured matra band and run edge to edge of the viewport. The single exception is the Work timeline's track, which is contained in its section's content column and carries time. Never draw any other green line that is not attached to a Bangla word.",
+        "body": "Every full-bleed horizontal green line is a Bangla word's headstroke, cut to the measured matra band and run edge to edge of the viewport. The single exception is the timeline's track in the hero, which stays inside the page padding and carries time. Never draw any other green line that is not attached to a Bangla word.",
         "section": "layout"
       },
       {
         "name": "The Hanging Rule",
-        "body": "Every section hangs a `stem` (1.5px) green line from the bottom of its matra down the left edge of the content column to the foot of the section. All content in the section sits `hang` (18px) to the right of it. On phones the stem moves to the page edge and the rail is indented 18px too.",
+        "body": "Every section hangs a `stem` (1.5px) green line from the bottom of its matra down the left edge of the content column to the foot of the section. All content in the section sits `hang` (18px) to the right of it. On phones the stem moves to the page edge and the rail is indented 18px too. Outside sections, the only vertical green line is the phone timeline's own stem (its track turned vertical), with its stops indented `hang` beside it.",
         "section": "layout"
       },
       {
-        "name": "The Flat Overlap Rule",
-        "body": "Depth is shown only by a line passing behind a letter. No shadows, no blur, no gradients, no tonal surfaces.",
+        "name": "The Flat Rule",
+        "body": "Nothing is lifted. No shadows, no blur, no gradients, no tonal surfaces; where a line meets a letter they fuse in the same green.",
         "section": "elevation"
       }
     ],
     "dos": [
-      "**Do** cut every green horizontal line to the matra band (`matra-top` 0.1815em to `matra-bottom` 0.278em, plus bleeds) of a Bangla word set at line-height 1, and run it edge to edge.",
+      "**Do** cut every full-bleed green horizontal line to the matra band (`matra-top` 0.1815em to `matra-bottom` 0.278em, plus bleeds) of a Bangla word set at line-height 1, and run it edge to edge.",
       "**Do** hang a 1.5px green stem from each section's matra down the content-column edge and indent all content 18px beside it.",
       "**Do** keep U+0020 in the Bangla subset and re-run the subset and coverage scripts whenever Bangla text changes.",
-      "**Do** pass stems behind glyphs with a ground-coloured text-stroke knockout and paint their roots above the glyphs.",
       "**Do** set every date and number in tabular lining figures.",
       "**Do** show each place by organisation, years and the work done, with its measured result as a figure.",
-      "**Do** draw the Work timeline at one true time scale ending at the build month, and keep the monthly rebuild that moves its end to today."
+      "**Do** draw the timeline at one true time scale ending at the build month, and keep the monthly rebuild that moves its end to today.",
+      "**Do** keep the timeline's load motion tied to the line: a constant-speed draw, each stop arriving when the line reaches its position, and full content without motion."
     ],
     "donts": [
       "**Don't** use grey dividers, borders or hairlines between items; separate with space.",

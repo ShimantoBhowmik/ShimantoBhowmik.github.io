@@ -11,7 +11,8 @@ const today = new Date();
 const origin = month(timeline[0].start);
 const end = today.getFullYear() * 12 + today.getMonth();
 const span = end - origin;
-const pct = (m: number) => `${(((m - origin) / span) * 100).toFixed(3)}%`;
+const frac = (m: number) => (m - origin) / span;
+const pct = (m: number) => `${(frac(m) * 100).toFixed(3)}%`;
 
 const stops = timeline.map((stop, i) => {
   const startYear = stop.start.slice(0, 4);
@@ -20,6 +21,7 @@ const stops = timeline.map((stop, i) => {
     ...stop,
     now: i === timeline.length - 1 && !stop.end,
     at: pct(month(stop.start)),
+    t: frac(month(stop.start)).toFixed(3),
     width: stop.branch && stop.end ? pct(month(stop.end) - month(stop.start) + origin) : '0%',
     when: !endYear
       ? `${startYear} – now`
@@ -40,7 +42,7 @@ for (let y = Number(timeline[0].start.slice(0, 4)); y <= today.getFullYear(); y+
     {stops.map((stop) => (
       <li
         class:list={['stop', { branch: stop.branch, now: stop.now }]}
-        style={`--at: ${stop.at}; --span: ${stop.width}`}
+        style={`--at: ${stop.at}; --span: ${stop.width}; --t: ${stop.t}`}
       >
         <a href={`#${stop.id}`}>
           <span class="label">{stop.label}</span>
@@ -70,6 +72,8 @@ for (let y = Number(timeline[0].start.slice(0, 4)); y <= today.getFullYear(); y+
     --dot-ring: 4px;
     --track: 10px;
     --green-soft: color-mix(in oklab, var(--green) 32%, var(--ground));
+    --draw: 1600ms;
+    --draw-delay: 250ms;
     padding-top: 150px;
     margin-right: clamp(56px, 7vw, 110px);
   }
@@ -169,6 +173,10 @@ for (let y = Number(timeline[0].start.slice(0, 4)); y <= today.getFullYear(); y+
       --angle: -40deg;
     }
 
+    .label {
+      font-size: 1.125rem;
+    }
+
     .now .label {
       font-size: 1.5rem;
       letter-spacing: -0.01em;
@@ -212,10 +220,44 @@ for (let y = Number(timeline[0].start.slice(0, 4)); y <= today.getFullYear(); y+
     left: var(--at);
   }
 
-  /* Phones: the same stops run down the section's stem, newest first. */
+  /* The signature motion: the track draws from the first start to today at a steady speed, and
+     each stop arrives as the line reaches it. Everything is visible without it. Keyframes define
+     only a `from` state, so `backwards` looks the same as `both` but lets each animation end and
+     release its compositor layer. */
+  @media (prefers-reduced-motion: no-preference) and (min-width: 641px) {
+    .stops::before {
+      transform-origin: left center;
+      animation: track-draw var(--draw) linear var(--draw-delay) backwards;
+    }
+
+    .stop {
+      animation: stop-arrive 420ms var(--ease-out) calc(var(--draw-delay) + var(--t) * var(--draw))
+        backwards;
+    }
+
+    .years {
+      animation: stop-arrive 600ms var(--ease-out) calc(var(--draw-delay) + var(--draw)) backwards;
+    }
+  }
+
+  @keyframes track-draw {
+    from {
+      scale: 0 1;
+    }
+  }
+
+  @keyframes stop-arrive {
+    from {
+      opacity: 0;
+      translate: 0 6px;
+    }
+  }
+
+  /* Phones: the same stops run down their own stem, newest first. */
   @media (max-width: 640px) {
     .timeline {
       padding-top: 0;
+      padding-left: var(--hang);
       margin-right: 0;
     }
 
@@ -226,7 +268,17 @@ for (let y = Number(timeline[0].start.slice(0, 4)); y <= today.getFullYear(); y+
       height: auto;
     }
 
-    .stops::before,
+    .stops::before {
+      left: calc(-1 * var(--hang));
+      right: auto;
+      top: 0.55em;
+      bottom: 0.55em;
+      width: var(--stem);
+      height: auto;
+      border-radius: 0;
+      transform: none;
+    }
+
     .branch::after,
     .years {
       display: none;
