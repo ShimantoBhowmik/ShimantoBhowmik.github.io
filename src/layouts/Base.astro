@@ -22,9 +22,8 @@ const ogImage = new URL('/og.png', Astro.site);
     <title>{title}</title>
     <meta name="description" content={person.description} />
     <link rel="canonical" href={canonical} />
-    <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#f2f4f4" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#0d1210" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#f2f4f4" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preload" href={latinFont} as="font" type="font/woff2" crossorigin />
