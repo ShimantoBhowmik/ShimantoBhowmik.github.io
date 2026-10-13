@@ -204,16 +204,16 @@ import { person, links, recent } from '../data/profile';
 
   @media (prefers-reduced-motion: no-preference) {
     .glyphs {
-      animation: hang-in 700ms var(--ease-out) both;
+      animation: hang-in 700ms var(--ease-out) backwards;
     }
 
     .name::after {
-      animation: draw 1200ms var(--ease-out) 380ms both;
+      animation: draw 1200ms var(--ease-out) 380ms backwards;
     }
 
     .cols li::before,
     .cols li::after {
-      animation: drop 800ms var(--ease-out) calc(900ms + var(--i) * 90ms) both;
+      animation: drop 800ms var(--ease-out) calc(900ms + var(--i) * 90ms) backwards;
     }
   }
 
