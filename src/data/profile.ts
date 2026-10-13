@@ -1,17 +1,17 @@
 // Everything the site says lives here. Layout code never hard-codes content.
 // House rule: no job titles anywhere. Places are named by organization, years and the work done.
 
-export interface Link {
+interface Link {
   label: string;
   href: string;
 }
 
-export interface Result {
+interface Result {
   value: string;
   label: string;
 }
 
-export interface Stint {
+interface Stint {
   years: string;
   focus: string;
   detail?: string;
@@ -29,14 +29,14 @@ export interface Place {
   stints: Stint[];
 }
 
-export interface Project {
+interface Project {
   name: string;
   summary: string;
   stack: string[];
   links: Link[];
 }
 
-export interface Award {
+interface Award {
   years: string;
   name: string;
   note?: string;

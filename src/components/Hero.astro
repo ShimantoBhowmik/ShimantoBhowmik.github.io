@@ -168,13 +168,10 @@ import { person, links, recent } from '../data/profile';
     transition: width 220ms var(--ease-out);
   }
 
-  .cols li:hover::after,
-  .cols li:focus-within::after {
-    width: 4px;
-  }
-
   .cols li:hover::before,
-  .cols li:focus-within::before {
+  .cols li:hover::after,
+  .cols li:focus-within::before,
+  .cols li:focus-within::after {
     width: 4px;
   }
 
