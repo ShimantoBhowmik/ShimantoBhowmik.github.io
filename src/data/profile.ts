@@ -83,6 +83,30 @@ export const recent: { id: string; org: string; years: string; line: string }[] 
   },
 ];
 
+export interface Stop {
+  /** Anchor of the entry this stop links to. */
+  id: string;
+  label: string;
+  /** Year and month, YYYY-MM. */
+  start: string;
+  /** Omitted while ongoing. */
+  end?: string;
+  /** A longer stint that ran alongside other work, drawn as a branch hanging under the line. */
+  branch?: boolean;
+}
+
+// The Work timeline, oldest first, drawn to scale from the first start to today.
+export const timeline: Stop[] = [
+  { id: 'rit-cs', label: 'RIT Computer Science', start: '2022-01', end: '2022-05' },
+  { id: 'amazon-agi', label: 'Amazon AGI', start: '2023-05', end: '2023-08' },
+  { id: 'sage-ai', label: 'Sage AI', start: '2023-09', end: '2024-05', branch: true },
+  { id: 'amazon-agi', label: 'Amazon AGI', start: '2024-05', end: '2024-09' },
+  { id: 'stanford', label: 'Stanford AI Lab', start: '2024-09', end: '2025-05', branch: true },
+  { id: 'amazon-agi', label: 'Amazon AGI · Alexa+', start: '2025-05', end: '2025-08' },
+  { id: 'finpilot', label: 'FinPilot', start: '2026-01', end: '2026-04' },
+  { id: 'aws', label: 'AWS Security', start: '2026-04' },
+];
+
 export const work: Place[] = [
   {
     id: 'aws',
@@ -203,7 +227,7 @@ export const research: Place[] = [
     id: 'rit-cs',
     org: 'RIT Computer Science',
     location: 'Rochester, NY',
-    years: '2023 – 2024',
+    years: '2022 – 2024',
     stints: [
       {
         years: '2023 – 2024',
@@ -212,14 +236,6 @@ export const research: Place[] = [
           'Rolled out an R sandbox and interactive R sessions alongside Python, with Thebe and Binder running version-locked kernels in the browser for reproducible labs.',
         results: [{ value: '+25%', label: 'student engagement' }],
       },
-    ],
-  },
-  {
-    id: 'rit-csec',
-    org: 'RIT Cybersecurity',
-    location: 'Rochester, NY',
-    years: '2022',
-    stints: [
       {
         years: '2022',
         focus: 'Secret sharing for the energy grid',

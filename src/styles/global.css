@@ -47,18 +47,7 @@
   --fs-title: clamp(1.375rem, 1.1rem + 0.8vw, 1.75rem);
   --fs-value: 1.375rem;
 
-  color-scheme: light dark;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --ground: #0d1210;
-    --ink: #e6ebe7;
-    --ink-2: #b2bcb6;
-    --ink-3: #8f9a94;
-    --rule: #2a332e;
-    --green: #3cb48a;
-  }
+  color-scheme: light;
 }
 
 *,

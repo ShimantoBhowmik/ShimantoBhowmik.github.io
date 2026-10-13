@@ -8,12 +8,7 @@ colors:
   ink-3: "#5c6661"
   rule: "#d3d8d4"
   green: "#006a4e"
-  ground-dark: "#0d1210"
-  ink-dark: "#e6ebe7"
-  ink-2-dark: "#b2bcb6"
-  ink-3-dark: "#8f9a94"
-  rule-dark: "#2a332e"
-  green-dark: "#3cb48a"
+  green-soft: "color-mix(in oklab, #006a4e 32%, #f2f4f4)"
 typography:
   display:
     fontFamily: "Anek Bangla Matra, Noto Sans Bengali, Bangla Sangam MN, sans-serif"
@@ -61,8 +56,27 @@ typography:
     fontWeight: 400
     lineHeight: 1.55
     fontFeature: "\"tnum\", \"lnum\""
+  stop:
+    fontFamily: "Anek Latin Variable, system-ui, sans-serif"
+    fontSize: "1.0625rem"
+    fontWeight: 600
+    lineHeight: 1
+  stop-current:
+    fontFamily: "Anek Latin Variable, system-ui, sans-serif"
+    fontSize: "1.5rem"
+    fontWeight: 700
+    lineHeight: 1
+    letterSpacing: "-0.01em"
+  tag:
+    fontFamily: "Anek Latin Variable, system-ui, sans-serif"
+    fontSize: "0.75rem"
+    fontWeight: 700
+    letterSpacing: "0.12em"
 rounded:
   focus: "2px"
+  track: "10px"
+  branch: "16px"
+  stop: "50%"
 spacing:
   pad: "clamp(16px, 5vw, 96px)"
   gutter: "clamp(16px, 2.2vw, 32px)"
@@ -97,6 +111,31 @@ components:
   contact-email:
     textColor: "{colors.ink}"
     typography: "{typography.headline-latin}"
+  timeline-track:
+    backgroundColor: "{colors.green}"
+    rounded: "{rounded.track}"
+    height: "10px"
+  timeline-stop:
+    backgroundColor: "{colors.ground}"
+    textColor: "{colors.ink}"
+    typography: "{typography.stop}"
+    rounded: "{rounded.stop}"
+    size: "22px"
+  timeline-stop-hover:
+    backgroundColor: "{colors.green}"
+    textColor: "{colors.green}"
+  timeline-stop-current:
+    backgroundColor: "{colors.ground}"
+    textColor: "{colors.ink}"
+    typography: "{typography.stop-current}"
+    rounded: "{rounded.stop}"
+    size: "40px"
+  timeline-now-tag:
+    textColor: "{colors.green}"
+    typography: "{typography.tag}"
+  timeline-branch:
+    textColor: "{colors.green-soft}"
+    rounded: "{rounded.branch}"
 ---
 
 # Design System: Shimanto Bhowmik
@@ -105,35 +144,36 @@ components:
 
 **Creative North Star: "The Matra"**
 
-One horizontal line, the matra, crosses the page and everything hangs from it, the way Bangla letters hang from their headstroke. The line is not drawn beside the type; it is the type. Every green rule on the page is the headstroke of a Bangla word, measured from the font and run edge to edge, and every vertical green line is a stem dropped from that headstroke down the edge of the content it carries.
+One horizontal line, the matra, crosses the page and everything hangs from it, the way Bangla letters hang from their headstroke. The line is not drawn beside the type; it is the type. Every green rule on the page is the headstroke of a Bangla word, measured from the font and run edge to edge, and every vertical green line is a stem dropped from that headstroke down the edge of the content it carries. The one horizontal green line that is not a headstroke is the Work section's timeline track: a route line hung inside the section, measuring time at one scale. It is the world's line put to work, not a decorative stripe.
 
-The world is flat, cool paper and near-black ink with one bottle green (Bangladesh flag green) that owns every structural line. Type and line carry every value: there are no cards, icons, photographs, shadows or gradients, and depth comes only from flat overlap where a stem passes behind a letter. Density is moderate and editorial; results are set as figures on a strict tabular column, never as badges.
+The world is light only, flat, cool paper and near-black ink with one bottle green (Bangladesh flag green) that owns every structural line. Type and line carry every value: there are no cards, icons, photographs, shadows or gradients, and depth comes only from flat overlap where a stem passes behind a letter. Density is moderate and editorial; results are set as figures on a strict tabular column, never as badges.
 
 Motion follows handwritten Bangla: the letters appear first, the headstroke is drawn across them last, once, on load, and the stems drop from it. Reading an entry thickens the stretch of stem beside it.
 
 **Key Characteristics:**
 - One green, used only for structural lines, the Bangla words those lines belong to, and emphasis underlines.
-- Every horizontal green line is a Bangla headstroke run full-bleed; every vertical green line is a stem hanging from one.
+- Every full-bleed horizontal green line is a Bangla headstroke; every vertical green line is a stem hanging from one; the Work timeline's track is the only other green line, and it hangs inside its section.
 - A single axis: the left edge of the content column, with all read content indented 18px off its stem.
 - Two families: Anek Bangla (subset) for Bangla, Anek Latin for all Latin; tabular lining figures for every date and number.
 - Flat. No borders between items, no shadows, no gradients, no icons, no imagery.
 
 ## Colors
 
-Cool paper, green-tinted near-black ink in three strengths, and one bottle green that is structure, not decoration. Every colour has a dark-scheme counterpart set by `prefers-color-scheme`.
+Cool paper, green-tinted near-black ink in three strengths, and one bottle green that is structure, not decoration. Light only: one palette, `color-scheme: light`, and the browser theme colour is Cool Paper. There is no dark scheme. (The favicon alone keeps a lighter green for dark browser tab bars; that adapts to the browser chrome, not to the site.)
 
 ### Primary
-- **Bottle Green** (`green`, dark `green-dark`): the matra lines, the stems, the Bangla name and section words, the emphasised link underline, the hover underline of every link, focus outlines, text selection background, and the per-stint years inside an entry. Nothing else.
+- **Bottle Green** (`green`): the matra lines, the stems, the Bangla name and section words, the emphasised link underline, the hover underline of every link, focus outlines, text selection background, the per-stint years inside an entry, the Work timeline's track, its NOW tag, and a timeline stop's fill and name on hover or focus. Nothing else.
+- **Soft Green** (`green-soft`, 32% Bottle Green mixed into Cool Paper in oklab): the timeline's branches only, so a concurrent stint reads as a spur off the line rather than a second line.
 
 ### Neutral
-- **Cool Paper** (`ground`, dark `ground-dark`): the only background. Also the colour of the text-stroke knockout that parts stems from glyphs.
-- **Ink** (`ink`, dark `ink-dark`): names of places, titles, result figures, the lede's leading name, the contact address.
-- **Ink Two** (`ink-2`, dark `ink-2-dark`): running prose: the lede, detail paragraphs, summaries, notes.
-- **Ink Three** (`ink-3`, dark `ink-3-dark`): metadata: years, locations, result labels, stacks, sub-labels, footer.
-- **Rule Grey** (`rule`, dark `rule-dark`): the resting underline of ordinary links and the scrollbar thumb. It is never a divider.
+- **Cool Paper** (`ground`): the only background. Also the colour of the text-stroke knockout that parts stems from glyphs, and the fill of a resting timeline stop.
+- **Ink** (`ink`): names of places, titles, result figures, the lede's leading name, the contact address, timeline stop names and the rings of its stops.
+- **Ink Two** (`ink-2`): running prose: the lede, detail paragraphs, summaries, notes.
+- **Ink Three** (`ink-3`): metadata: years, locations, result labels, stacks, sub-labels, footer, the timeline's year scale.
+- **Rule Grey** (`rule`): the resting underline of ordinary links and the scrollbar thumb. It is never a divider.
 
 ### Named Rules
-**The One Green Rule.** Green belongs to the line system and the Bangla words it comes from. It may underline the primary action and appear on hover and focus; it never fills a surface, a button, or a badge.
+**The One Green Rule.** Green belongs to the line system and the Bangla words it comes from. It may underline the primary action and appear on hover and focus; it never fills a surface, a button, or a badge. The only green fill is a timeline stop, a dot on the line itself, under hover or focus.
 
 **The No Grey Divider Rule.** Items are separated by space alone. Rule Grey exists only under resting links; there are no borders, hairlines or dividers anywhere.
 
@@ -154,6 +194,9 @@ Cool paper, green-tinted near-black ink in three strengths, and one bottle green
 - **Value** (600, 1.375rem, line-height 1.15, tabular): result figures, set above their label.
 - **Body** (400, 1.0625rem, line-height 1.55, max 66ch): detail prose.
 - **Label** (400, 0.875rem): years, locations, result labels, stacks, sub-labels, in Ink Three.
+- **Stop** (600, 1.0625rem, line-height 1, no-wrap): timeline stop names, Ink, angled above the track.
+- **Stop Current** (700, 1.5rem, line-height 1, -0.01em): the current stop's name at 1200px and wider; below that it keeps Stop's size at 700.
+- **Tag** (700, 0.75rem, 0.12em, uppercase): the NOW tag under the current stop, Bottle Green. The only uppercase in the system, and only attached to that stop.
 
 ### Named Rules
 **The Tabular Column Rule.** Every date and number uses tabular lining figures. Years read as a strict column.
@@ -170,10 +213,12 @@ The matra band is measured from the font: with line-height 1, the headstroke sit
 
 Hero: lede in columns 1-7, actions in 9-12 right-aligned; then the Bangla name, offset by `hang`, with four columns hanging below it (two at 1080px, one at 560px). Each stem drops from the bottom of the matra to the foot of its column; stems for wrapped rows start just above their row and lose their root.
 
-Breakpoints in use: 1080px, 860px, 720px, 560px.
+The Work timeline sits at the top of the Work section in the content column, hanging off the section stem like every entry. It reserves 150px above the track for the angled stop names and keeps clamp(56px, 7vw, 110px) clear on the right so the last name never leaves the page. The track runs at one scale from the first start month to the month of the build; a monthly scheduled rebuild keeps its end at today.
+
+Breakpoints in use: 1200px (timeline: shallower name angle, large current name), 1080px, 860px, 720px, 640px (timeline becomes a vertical list), 560px.
 
 ### Named Rules
-**The Headstroke Rule.** Every horizontal green line is a Bangla word's headstroke, cut to the measured matra band and run edge to edge of the viewport. Never draw a green line that is not attached to a Bangla word.
+**The Headstroke Rule.** Every full-bleed horizontal green line is a Bangla word's headstroke, cut to the measured matra band and run edge to edge of the viewport. The single exception is the Work timeline's track, which is contained in its section's content column and carries time. Never draw any other green line that is not attached to a Bangla word.
 
 **The Hanging Rule.** Every section hangs a `stem` (1.5px) green line from the bottom of its matra down the left edge of the content column to the foot of the section. All content in the section sits `hang` (18px) to the right of it. On phones the stem moves to the page edge and the rail is indented 18px too.
 
@@ -186,7 +231,7 @@ Fully flat. There is no shadow vocabulary. The only depth is flat overlap: in th
 
 ## Shapes
 
-Square and linear. Everything is a line or a letter: full-bleed horizontal bands, 1.5px vertical stems that thicken to 4px on hover or focus, and underlines (1.5px resting, 3px on the primary action, 0.06em on the contact address). The only radius is the 2px on the focus outline. The favicon is the system in miniature: a green headstroke bar with a stem dropping from it.
+Square and linear. Everything is a line or a letter: full-bleed horizontal bands, 1.5px vertical stems that thicken to 4px on hover or focus, and underlines (1.5px resting, 3px on the primary action, 0.06em on the contact address). Headstrokes, stems and underlines stay square; the 2px focus outline is the only radius on them. The Work timeline alone has transit-map geometry: a fully rounded 10px track, circular stops, and branches that leave the line with a 16px curved elbow. The favicon is the system in miniature: a green headstroke bar with a stem dropping from it.
 
 ## Components
 
@@ -215,6 +260,16 @@ Two-column list for awards and background: a 6.5rem tabular years column, then n
 ### Hero Name (signature)
 The Bangla name at Display size, green, full-bleed, with the matra fused through its headstroke and four stems hanging to the recent-work columns. Load sequence (only with no reduced-motion preference): glyphs fade and settle 700ms; matra draws left to right 1200ms from 380ms; stems drop 800ms from 900ms, staggered 90ms. Hovering a column thickens its stem to 4px.
 
+### Work Timeline (signature)
+A transit strip map of the career, oldest stop first, at the top of the Work section.
+- **Track:** a 10px Bottle Green line, fully rounded, from the first start month to the build month at one scale. Each stop sits at its start month.
+- **Stops:** Cool Paper dots with an Ink ring, 22px with a 4px ring. The current stop is 40px with a 13px ring, with a Bottle Green NOW tag (Tag style) below it.
+- **Names:** Stop style, angled above the track from the dot (rotate -40deg at 1200px and wider, -55deg below, so neighbours three months apart never touch). The current stop's name is 700, Stop Current size at 1200px and wider, and starts from the shoulder of its larger dot.
+- **Branches:** a longer stint that ran alongside other work hangs under the track to its end date as a 6px Soft Green left and bottom border with a 16px elbow radius.
+- **Years:** a Label-size tabular year scale in Ink Three below the track.
+- **Hover / Focus:** the dot fills Bottle Green and its name turns green over 160ms. Each stop links to its entry.
+- **Phones (640px and below):** the same list runs down the section stem, newest first: small dots (14px, 3px ring; the current one 20px, 6px ring) sit on the stem, names at Stop size with years inline in Ink Three. Track, branches and year scale are hidden.
+
 ## Do's and Don'ts
 
 ### Do:
@@ -224,10 +279,12 @@ The Bangla name at Display size, green, full-bleed, with the matra fused through
 - **Do** pass stems behind glyphs with a ground-coloured text-stroke knockout and paint their roots above the glyphs.
 - **Do** set every date and number in tabular lining figures.
 - **Do** show each place by organisation, years and the work done, with its measured result as a figure.
+- **Do** draw the Work timeline at one true time scale ending at the build month, and keep the monthly rebuild that moves its end to today.
 
 ### Don't:
 - **Don't** use grey dividers, borders or hairlines between items; separate with space.
 - **Don't** use shadows, gradients, icons, photographs or other imagery.
-- **Don't** use green for fills, buttons, badges or decorative lines not attached to a Bangla word.
+- **Don't** use green for fills, buttons, badges or decorative lines; the only green lines are headstrokes, stems and the timeline track, and the only green fill is a hovered or focused timeline stop.
+- **Don't** add a dark scheme or `prefers-color-scheme` styles; the site is light only.
 - **Don't** add a third type family or set Latin in the Bangla face.
 - **Don't** show job titles anywhere in content.
