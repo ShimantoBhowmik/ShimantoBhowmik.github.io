@@ -1,0 +1,312 @@
+---
+import { timeline } from '../data/profile';
+
+// Months since year 0, so positions are linear in time.
+const month = (ym: string) => {
+  const [y, m] = ym.split('-').map(Number);
+  return y * 12 + (m - 1);
+};
+
+const today = new Date();
+const origin = month(timeline[0].start);
+const end = today.getFullYear() * 12 + today.getMonth();
+const span = end - origin;
+const pct = (m: number) => `${(((m - origin) / span) * 100).toFixed(3)}%`;
+
+const stops = timeline.map((stop, i) => {
+  const startYear = stop.start.slice(0, 4);
+  const endYear = stop.end?.slice(0, 4);
+  return {
+    ...stop,
+    now: i === timeline.length - 1 && !stop.end,
+    at: pct(month(stop.start)),
+    width: stop.branch && stop.end ? pct(month(stop.end) - month(stop.start) + origin) : '0%',
+    when: !endYear
+      ? `${startYear} – now`
+      : endYear === startYear
+        ? startYear
+        : `${startYear} – ${endYear}`,
+  };
+});
+
+const years = [];
+for (let y = Number(timeline[0].start.slice(0, 4)); y <= today.getFullYear(); y++) {
+  years.push({ year: y, at: pct(y * 12) });
+}
+---
+
+<div class="timeline">
+  <ol class="stops" aria-label="Career timeline">
+    {stops.map((stop) => (
+      <li
+        class:list={['stop', { branch: stop.branch, now: stop.now }]}
+        style={`--at: ${stop.at}; --span: ${stop.width}`}
+      >
+        <a href={`#${stop.id}`}>
+          <span class="label">{stop.label}</span>
+          <span class="when num">{stop.when}</span>
+        </a>
+        {stop.now && (
+          <span class="now-tag" aria-hidden="true">
+            Now
+          </span>
+        )}
+      </li>
+    ))}
+  </ol>
+  <ol class="years num" aria-hidden="true">
+    {years.map(({ year, at }) => (
+      <li style={`--at: ${at}`}>{year}</li>
+    ))}
+  </ol>
+</div>
+
+<style>
+  /* Desktop: a transit strip map. The line runs from the first start to today at one scale;
+     each stop sits at its start month with its name angled above, the way door strip maps are set. */
+  .timeline {
+    --angle: -55deg;
+    --dot: 22px;
+    --dot-ring: 4px;
+    --track: 10px;
+    --green-soft: color-mix(in oklab, var(--green) 32%, var(--ground));
+    padding-top: 150px;
+    margin-right: clamp(56px, 7vw, 110px);
+  }
+
+  .stops {
+    position: relative;
+    height: 64px;
+  }
+
+  .stops::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: var(--track);
+    border-radius: var(--track);
+    background: var(--green);
+    transform: translateY(-50%);
+  }
+
+  .stop {
+    position: absolute;
+    top: 0;
+    left: var(--at);
+    width: var(--span);
+  }
+
+  .stop a {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: var(--dot);
+    height: var(--dot);
+    border: var(--dot-ring) solid var(--ink);
+    border-radius: 50%;
+    background: var(--ground);
+    color: var(--ink);
+    text-decoration: none;
+    transform: translate(-50%, -50%);
+    transition:
+      background-color 160ms var(--ease-out),
+      border-color 160ms var(--ease-out);
+  }
+
+  .label {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 6px);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+    transform-origin: left bottom;
+    transform: rotate(var(--angle));
+    transition: color 160ms var(--ease-out);
+  }
+
+  .when {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .stop a:hover,
+  .stop a:focus-visible {
+    border-color: var(--green);
+    background: var(--green);
+  }
+
+  .stop a:hover .label,
+  .stop a:focus-visible .label {
+    color: var(--green);
+  }
+
+  .now a {
+    --dot: 40px;
+    --dot-ring: 13px;
+  }
+
+  /* The current stop's name starts from the shoulder of its larger dot, not its crown: offsets
+     are from the dot's centre (its inner box is smaller than the ring) by about its radius. */
+  .now .label {
+    left: calc(50% + var(--dot) * 0.4);
+    bottom: calc(50% + var(--dot) * 0.4);
+    font-weight: 700;
+  }
+
+  /* Wide screens give three months enough room for the strip map's shallower angle and a
+     large name for the current stop; narrower ones steepen the angle so neighbours don't touch. */
+  @media (min-width: 1200px) {
+    .timeline {
+      --angle: -40deg;
+    }
+
+    .now .label {
+      font-size: 1.5rem;
+      letter-spacing: -0.01em;
+    }
+  }
+
+  .now-tag {
+    position: absolute;
+    left: 0;
+    top: 30px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green);
+    transform: translateX(-50%);
+  }
+
+  /* A longer stint that ran alongside other work hangs under the line to its end date. */
+  .branch::after {
+    content: '';
+    position: absolute;
+    left: 14px;
+    right: 0;
+    top: calc(var(--track) / 2);
+    height: 34px;
+    border: 0 solid var(--green-soft);
+    border-width: 0 0 6px 6px;
+    border-bottom-left-radius: 16px;
+  }
+
+  .years {
+    position: relative;
+    height: 1.25em;
+    font-size: var(--fs-small);
+    color: var(--ink-3);
+  }
+
+  .years li {
+    position: absolute;
+    left: var(--at);
+  }
+
+  /* Phones: the same stops run down the section's stem, newest first. */
+  @media (max-width: 640px) {
+    .timeline {
+      padding-top: 0;
+      margin-right: 0;
+    }
+
+    .stops {
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 18px;
+      height: auto;
+    }
+
+    .stops::before,
+    .branch::after,
+    .years {
+      display: none;
+    }
+
+    .stop {
+      position: relative;
+      left: auto;
+      width: auto;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .stop a {
+      position: relative;
+      width: auto;
+      height: auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      column-gap: 10px;
+      border: 0;
+      border-radius: 0;
+      background: none;
+      transform: none;
+    }
+
+    .stop a::before {
+      content: '';
+      position: absolute;
+      left: calc(-1 * var(--hang) - 7px + var(--stem) / 2);
+      top: 0.2em;
+      width: 14px;
+      height: 14px;
+      box-sizing: border-box;
+      border: 3px solid var(--ink);
+      border-radius: 50%;
+      background: var(--ground);
+    }
+
+    .stop a:hover,
+    .stop a:focus-visible {
+      background: none;
+    }
+
+    .stop a:hover::before,
+    .stop a:focus-visible::before {
+      border-color: var(--green);
+      background: var(--green);
+    }
+
+    .label,
+    .now .label {
+      position: static;
+      font-size: 1.0625rem;
+      transform: none;
+    }
+
+    .when {
+      position: static;
+      width: auto;
+      height: auto;
+      overflow: visible;
+      clip-path: none;
+      font-size: var(--fs-small);
+      color: var(--ink-3);
+    }
+
+    .now a::before {
+      left: calc(-1 * var(--hang) - 10px + var(--stem) / 2);
+      top: 0.05em;
+      width: 20px;
+      height: 20px;
+      border-width: 6px;
+    }
+
+    .now-tag {
+      position: static;
+      transform: none;
+    }
+  }
+</style>

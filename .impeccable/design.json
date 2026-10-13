@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-13T18:25:12+00:00",
+  "generatedAt": "2026-10-13T20:00:00+00:00",
   "title": "Design System: Shimanto Bhowmik",
   "extensions": {
     "colorMeta": {
@@ -19,19 +19,19 @@
           "oklch(95% 0.11 163)"
         ]
       },
-      "green-dark": {
+      "green-soft": {
         "role": "primary",
-        "displayName": "Bottle Green (dark scheme)",
-        "canonical": "#3cb48a",
+        "displayName": "Soft Green",
+        "canonical": "color-mix(in oklab, #006a4e 32%, #f2f4f4)",
         "tonalRamp": [
-          "oklch(15% 0.11 163)",
-          "oklch(25% 0.11 163)",
-          "oklch(37% 0.11 163)",
-          "oklch(49% 0.11 163)",
-          "oklch(61% 0.11 163)",
-          "oklch(73% 0.11 163)",
-          "oklch(85% 0.11 163)",
-          "oklch(95% 0.11 163)"
+          "oklch(15% 0.04 163)",
+          "oklch(25% 0.04 163)",
+          "oklch(37% 0.04 163)",
+          "oklch(49% 0.04 163)",
+          "oklch(61% 0.04 163)",
+          "oklch(73% 0.04 163)",
+          "oklch(85% 0.04 163)",
+          "oklch(95% 0.04 163)"
         ]
       },
       "ground": {
@@ -108,81 +108,6 @@
           "oklch(85% 0.008 160)",
           "oklch(95% 0.008 160)"
         ]
-      },
-      "ground-dark": {
-        "role": "neutral",
-        "displayName": "Cool Paper (dark scheme)",
-        "canonical": "#0d1210",
-        "tonalRamp": [
-          "oklch(15% 0.008 160)",
-          "oklch(25% 0.008 160)",
-          "oklch(37% 0.008 160)",
-          "oklch(49% 0.008 160)",
-          "oklch(61% 0.008 160)",
-          "oklch(73% 0.008 160)",
-          "oklch(85% 0.008 160)",
-          "oklch(95% 0.008 160)"
-        ]
-      },
-      "ink-dark": {
-        "role": "neutral",
-        "displayName": "Ink (dark scheme)",
-        "canonical": "#e6ebe7",
-        "tonalRamp": [
-          "oklch(15% 0.008 160)",
-          "oklch(25% 0.008 160)",
-          "oklch(37% 0.008 160)",
-          "oklch(49% 0.008 160)",
-          "oklch(61% 0.008 160)",
-          "oklch(73% 0.008 160)",
-          "oklch(85% 0.008 160)",
-          "oklch(95% 0.008 160)"
-        ]
-      },
-      "ink-2-dark": {
-        "role": "neutral",
-        "displayName": "Ink Two (dark scheme)",
-        "canonical": "#b2bcb6",
-        "tonalRamp": [
-          "oklch(15% 0.008 160)",
-          "oklch(25% 0.008 160)",
-          "oklch(37% 0.008 160)",
-          "oklch(49% 0.008 160)",
-          "oklch(61% 0.008 160)",
-          "oklch(73% 0.008 160)",
-          "oklch(85% 0.008 160)",
-          "oklch(95% 0.008 160)"
-        ]
-      },
-      "ink-3-dark": {
-        "role": "neutral",
-        "displayName": "Ink Three (dark scheme)",
-        "canonical": "#8f9a94",
-        "tonalRamp": [
-          "oklch(15% 0.008 160)",
-          "oklch(25% 0.008 160)",
-          "oklch(37% 0.008 160)",
-          "oklch(49% 0.008 160)",
-          "oklch(61% 0.008 160)",
-          "oklch(73% 0.008 160)",
-          "oklch(85% 0.008 160)",
-          "oklch(95% 0.008 160)"
-        ]
-      },
-      "rule-dark": {
-        "role": "neutral",
-        "displayName": "Rule Grey (dark scheme)",
-        "canonical": "#2a332e",
-        "tonalRamp": [
-          "oklch(15% 0.008 160)",
-          "oklch(25% 0.008 160)",
-          "oklch(37% 0.008 160)",
-          "oklch(49% 0.008 160)",
-          "oklch(61% 0.008 160)",
-          "oklch(73% 0.008 160)",
-          "oklch(85% 0.008 160)",
-          "oklch(95% 0.008 160)"
-        ]
       }
     },
     "typographyMeta": {
@@ -217,6 +142,18 @@
       "label": {
         "displayName": "Label",
         "purpose": "Years, locations, result labels, stacks, sub-labels, in Ink Three."
+      },
+      "stop": {
+        "displayName": "Stop",
+        "purpose": "Timeline stop names, Ink, angled above the track."
+      },
+      "stop-current": {
+        "displayName": "Stop Current",
+        "purpose": "The current timeline stop's name at 1200px and wider; 700 at Stop size below."
+      },
+      "tag": {
+        "displayName": "Tag",
+        "purpose": "The green uppercase NOW tag under the current timeline stop; the only uppercase in the system."
       }
     },
     "shadows": [],
@@ -255,9 +192,18 @@
         "name": "reduced-motion",
         "value": "prefers-reduced-motion: no-preference only",
         "purpose": "Load motion runs only when the user has not asked for reduced motion."
+      },
+      {
+        "name": "stop-fill",
+        "value": "160ms ease-out",
+        "purpose": "Timeline stop dot fills green and its name turns green on hover or focus."
       }
     ],
     "breakpoints": [
+      {
+        "name": "timeline-wide",
+        "value": "1200px"
+      },
       {
         "name": "hero-two-col",
         "value": "1080px"
@@ -271,6 +217,10 @@
         "value": "720px"
       },
       {
+        "name": "timeline-vertical",
+        "value": "640px"
+      },
+      {
         "name": "hero-one-col",
         "value": "560px"
       }
@@ -278,7 +228,8 @@
     "fonts": {
       "bangla": "Anek Bangla 600 subset (src/fonts/anek-bangla-subset.woff2), unicode-range U+0020, U+0980-09FF, font-display block; subset includes U+0020 so it owns the line box. Rebuild with scripts/subset-bangla.py; scripts/check-bangla.mjs fails the build on uncovered characters.",
       "latin": "@fontsource-variable/anek-latin (wght axis)"
-    }
+    },
+    "build": "A monthly scheduled rebuild (GitHub Actions cron, 1st of the month) keeps the Work timeline's track ending at today."
   },
   "components": [
     {
@@ -336,14 +287,22 @@
       "description": "The address set large in Ink with a 0.06em green underline; the closing action.",
       "html": "<a class=\"ds-email\" href=\"#\">bhowmikshimanto@gmail.com</a>",
       "css": ".ds-email{display:inline-block;font-family:var(--font-latin);font-size:2.5rem;font-weight:600;line-height:1.1;letter-spacing:-0.02em;color:var(--ink,#121614);text-decoration-line:underline;text-decoration-color:var(--green,#006a4e);text-decoration-thickness:0.06em;text-underline-offset:0.16em}.ds-email:focus-visible{outline:2px solid var(--green,#006a4e);outline-offset:3px;border-radius:2px}"
+    },
+    {
+      "name": "Work Timeline",
+      "kind": "custom",
+      "refersTo": "timeline-stop",
+      "description": "Transit strip map of the career: a 10px green track at one time scale, ringed stops with angled names, a large current stop with a NOW tag, and soft-green branches for concurrent stints.",
+      "html": "<div class=\"ds-tl\"><ol class=\"ds-tl-stops\"><li class=\"ds-tl-stop\" style=\"--at:0%\"><a href=\"#\"><span class=\"ds-tl-label\">RIT Computer Science</span></a></li><li class=\"ds-tl-stop ds-tl-branch\" style=\"--at:30%;--span:35%\"><a href=\"#\"><span class=\"ds-tl-label\">Sage AI</span></a></li><li class=\"ds-tl-stop\" style=\"--at:55%\"><a href=\"#\"><span class=\"ds-tl-label\">Amazon AGI</span></a></li><li class=\"ds-tl-stop ds-tl-now\" style=\"--at:100%\"><a href=\"#\"><span class=\"ds-tl-label\">AWS Security</span></a><span class=\"ds-tl-tag\">Now</span></li></ol><ol class=\"ds-tl-years\"><li style=\"--at:0%\">2022</li><li style=\"--at:50%\">2024</li><li style=\"--at:100%\">2026</li></ol></div>",
+      "css": ".ds-tl{--angle:-40deg;--green-soft:color-mix(in oklab,var(--green,#006a4e) 32%,var(--ground,#f2f4f4));padding:130px 90px 0 20px;font-family:var(--font-latin);color:var(--ink,#121614)}.ds-tl ol{margin:0;padding:0;list-style:none}.ds-tl-stops{position:relative;height:64px}.ds-tl-stops::before{content:'';position:absolute;left:0;right:0;top:0;height:10px;border-radius:10px;background:var(--green,#006a4e);transform:translateY(-50%)}.ds-tl-stop{position:absolute;top:0;left:var(--at);width:var(--span,0)}.ds-tl-stop a{--dot:22px;--ring:4px;position:absolute;z-index:1;left:0;top:0;width:var(--dot);height:var(--dot);box-sizing:border-box;border:var(--ring) solid var(--ink,#121614);border-radius:50%;background:var(--ground,#f2f4f4);color:var(--ink,#121614);text-decoration:none;transform:translate(-50%,-50%);transition:background-color 160ms cubic-bezier(0.16,1,0.3,1),border-color 160ms cubic-bezier(0.16,1,0.3,1)}.ds-tl-label{position:absolute;left:50%;bottom:calc(100% + 6px);font-size:1.0625rem;font-weight:600;line-height:1;white-space:nowrap;transform-origin:left bottom;transform:rotate(var(--angle));transition:color 160ms cubic-bezier(0.16,1,0.3,1)}.ds-tl-stop a:hover,.ds-tl-stop a:focus-visible{border-color:var(--green,#006a4e);background:var(--green,#006a4e);outline:none}.ds-tl-stop a:hover .ds-tl-label,.ds-tl-stop a:focus-visible .ds-tl-label{color:var(--green,#006a4e)}.ds-tl-now a{--dot:40px;--ring:13px}.ds-tl-now .ds-tl-label{left:calc(50% + 16px);bottom:calc(50% + 16px);font-size:1.5rem;font-weight:700;letter-spacing:-0.01em}.ds-tl-tag{position:absolute;left:0;top:30px;font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--green,#006a4e);transform:translateX(-50%)}.ds-tl-branch::after{content:'';position:absolute;left:14px;right:0;top:5px;height:34px;border:0 solid var(--green-soft);border-width:0 0 6px 6px;border-bottom-left-radius:16px}.ds-tl-years{position:relative;height:1.25em;font-size:0.875rem;color:var(--ink-3,#5c6661);font-variant-numeric:tabular-nums lining-nums}.ds-tl-years li{position:absolute;left:var(--at);transform:translateX(-50%)}"
     }
   ],
   "narrative": {
     "northStar": "The Matra",
-    "overview": "One horizontal line, the matra, crosses the page and everything hangs from it, the way Bangla letters hang from their headstroke. The line is not drawn beside the type; it is the type. Every green rule on the page is the headstroke of a Bangla word, measured from the font and run edge to edge, and every vertical green line is a stem dropped from that headstroke down the edge of the content it carries.\n\nThe world is flat, cool paper and near-black ink with one bottle green (Bangladesh flag green) that owns every structural line. Type and line carry every value: there are no cards, icons, photographs, shadows or gradients, and depth comes only from flat overlap where a stem passes behind a letter. Density is moderate and editorial; results are set as figures on a strict tabular column, never as badges.\n\nMotion follows handwritten Bangla: the letters appear first, the headstroke is drawn across them last, once, on load, and the stems drop from it. Reading an entry thickens the stretch of stem beside it.",
+    "overview": "One horizontal line, the matra, crosses the page and everything hangs from it, the way Bangla letters hang from their headstroke. The line is not drawn beside the type; it is the type. Every green rule on the page is the headstroke of a Bangla word, measured from the font and run edge to edge, and every vertical green line is a stem dropped from that headstroke down the edge of the content it carries. The one horizontal green line that is not a headstroke is the Work section's timeline track: a route line hung inside the section, measuring time at one scale. It is the world's line put to work, not a decorative stripe.\n\nThe world is light only, flat, cool paper and near-black ink with one bottle green (Bangladesh flag green) that owns every structural line. Type and line carry every value: there are no cards, icons, photographs, shadows or gradients, and depth comes only from flat overlap where a stem passes behind a letter. Density is moderate and editorial; results are set as figures on a strict tabular column, never as badges.\n\nMotion follows handwritten Bangla: the letters appear first, the headstroke is drawn across them last, once, on load, and the stems drop from it. Reading an entry thickens the stretch of stem beside it.",
     "keyCharacteristics": [
       "One green, used only for structural lines, the Bangla words those lines belong to, and emphasis underlines.",
-      "Every horizontal green line is a Bangla headstroke run full-bleed; every vertical green line is a stem hanging from one.",
+      "Every full-bleed horizontal green line is a Bangla headstroke; every vertical green line is a stem hanging from one; the Work timeline's track is the only other green line, and it hangs inside its section.",
       "A single axis: the left edge of the content column, with all read content indented 18px off its stem.",
       "Two families: Anek Bangla (subset) for Bangla, Anek Latin for all Latin; tabular lining figures for every date and number.",
       "Flat. No borders between items, no shadows, no gradients, no icons, no imagery."
@@ -351,7 +310,7 @@
     "rules": [
       {
         "name": "The One Green Rule",
-        "body": "Green belongs to the line system and the Bangla words it comes from. It may underline the primary action and appear on hover and focus; it never fills a surface, a button, or a badge.",
+        "body": "Green belongs to the line system and the Bangla words it comes from. It may underline the primary action and appear on hover and focus; it never fills a surface, a button, or a badge. The only green fill is a timeline stop, a dot on the line itself, under hover or focus.",
         "section": "colors"
       },
       {
@@ -371,7 +330,7 @@
       },
       {
         "name": "The Headstroke Rule",
-        "body": "Every horizontal green line is a Bangla word's headstroke, cut to the measured matra band and run edge to edge of the viewport. Never draw a green line that is not attached to a Bangla word.",
+        "body": "Every full-bleed horizontal green line is a Bangla word's headstroke, cut to the measured matra band and run edge to edge of the viewport. The single exception is the Work timeline's track, which is contained in its section's content column and carries time. Never draw any other green line that is not attached to a Bangla word.",
         "section": "layout"
       },
       {
@@ -391,12 +350,14 @@
       "**Do** keep U+0020 in the Bangla subset and re-run the subset and coverage scripts whenever Bangla text changes.",
       "**Do** pass stems behind glyphs with a ground-coloured text-stroke knockout and paint their roots above the glyphs.",
       "**Do** set every date and number in tabular lining figures.",
-      "**Do** show each place by organisation, years and the work done, with its measured result as a figure."
+      "**Do** show each place by organisation, years and the work done, with its measured result as a figure.",
+      "**Do** draw the Work timeline at one true time scale ending at the build month, and keep the monthly rebuild that moves its end to today."
     ],
     "donts": [
       "**Don't** use grey dividers, borders or hairlines between items; separate with space.",
       "**Don't** use shadows, gradients, icons, photographs or other imagery.",
-      "**Don't** use green for fills, buttons, badges or decorative lines not attached to a Bangla word.",
+      "**Don't** use green for fills, buttons, badges or decorative lines; the only green lines are headstrokes, stems and the timeline track, and the only green fill is a hovered or focused timeline stop.",
+      "**Don't** add a dark scheme or `prefers-color-scheme` styles; the site is light only.",
       "**Don't** add a third type family or set Latin in the Bangla face.",
       "**Don't** show job titles anywhere in content."
     ]
