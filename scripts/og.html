@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <!-- Source for public/og.png. Regenerate with: sh scripts/render-images.sh -->
+    <style>
+      @font-face {
+        font-family: 'Anek Bangla Matra';
+        font-weight: 600;
+        src: url('../src/fonts/anek-bangla-subset.woff2');
+        unicode-range: U+0020, U+0980-09FF;
+      }
+      @font-face {
+        font-family: 'Anek Latin';
+        font-weight: 100 800;
+        src: url('../node_modules/@fontsource-variable/anek-latin/files/anek-latin-latin-wght-normal.woff2');
+      }
+      * {
+        margin: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+        background: #f2f4f4;
+        color: #121614;
+        font-family: 'Anek Latin', sans-serif;
+      }
+      .name {
+        position: absolute;
+        left: 72px;
+        top: 132px;
+        font: 600 168px/1 'Anek Bangla Matra';
+        color: #006a4e;
+        white-space: nowrap;
+      }
+      .name::after {
+        content: '';
+        position: absolute;
+        left: -72px;
+        width: 1200px;
+        top: calc(0.1815em - 0.006em);
+        height: calc(0.0965em + 0.012em);
+        background: #006a4e;
+      }
+      .en {
+        position: absolute;
+        left: 72px;
+        bottom: 112px;
+        font-size: 52px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+      .line {
+        position: absolute;
+        left: 72px;
+        bottom: 64px;
+        font-size: 28px;
+        color: #434c47;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="name">সীমান্ত ভৌমিক</div>
+    <div class="en">Shimanto Bhowmik</div>
+    <div class="line">Building the infrastructure machine learning ships on. Seattle.</div>
+  </body>
+</html>

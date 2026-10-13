@@ -1,0 +1,176 @@
+---
+import type { Place } from '../data/profile';
+
+interface Props {
+  place: Place;
+}
+
+const { place } = Astro.props;
+const showStintYears = place.stints.length > 1;
+---
+
+<article class="entry grid" id={place.id} aria-labelledby={`${place.id}-org`}>
+  <header class="head rail">
+    <h3 class="org" id={`${place.id}-org`}>
+      {place.href ? <a href={place.href}>{place.org}</a> : place.org}
+    </h3>
+    <p class="meta">
+      <span class="num">{place.years}</span> · {place.location}
+    </p>
+  </header>
+
+  <div class="body content">
+    {place.stints.map((stint) => (
+      <section class="stint">
+        <h4 class="focus">
+          {showStintYears && <span class="stint-years num">{stint.years}</span>}
+          {stint.focus}
+        </h4>
+        {stint.cite && <p class="cite">{stint.cite}</p>}
+        {stint.detail && <p class="detail">{stint.detail}</p>}
+        {stint.results.length > 0 && (
+          <dl class="results">
+            {stint.results.map((result) => (
+              <div>
+                <dt>{result.label}</dt>
+                <dd class="num">{result.value}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
+        {stint.link && (
+          <p class="more">
+            <a href={stint.link.href}>{stint.link.label}</a>
+          </p>
+        )}
+      </section>
+    ))}
+  </div>
+</article>
+
+<style>
+  .entry {
+    position: relative;
+    padding-block: clamp(28px, 3.2vw, 44px);
+    row-gap: 16px;
+  }
+
+  .entry:first-of-type {
+    padding-top: 0;
+  }
+
+  /* The stretch of the section's stem beside this entry thickens while it is being read. */
+  .entry::before {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    left: var(--stem-x);
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--green);
+    transform: scaleX(0.375);
+    transform-origin: left center;
+    opacity: 0;
+    transition:
+      transform 220ms var(--ease-out),
+      opacity 220ms var(--ease-out);
+  }
+
+  .entry:hover::before,
+  .entry:focus-within::before {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+
+  .org {
+    font-size: var(--fs-title);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .org a {
+    text-decoration: none;
+  }
+
+  .org a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--green);
+  }
+
+  .meta {
+    margin-top: 6px;
+    font-size: var(--fs-small);
+    color: var(--ink-3);
+  }
+
+  .body {
+    display: grid;
+    gap: clamp(28px, 3vw, 40px);
+  }
+
+  .focus {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: 14px;
+    max-width: 44ch;
+    font-size: 1.1875rem;
+    font-weight: 600;
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+
+  .stint-years {
+    font-size: var(--fs-small);
+    font-weight: 500;
+    color: var(--green);
+  }
+
+  .cite {
+    margin-top: 6px;
+    font-size: var(--fs-small);
+    color: var(--ink-3);
+  }
+
+  .detail {
+    margin-top: 10px;
+    max-width: 66ch;
+    color: var(--ink-2);
+    text-wrap: pretty;
+  }
+
+  .results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px clamp(28px, 4vw, 56px);
+    margin-top: 18px;
+  }
+
+  .results div {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .results dd {
+    font-size: var(--fs-value);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  .results dt {
+    font-size: var(--fs-small);
+    color: var(--ink-3);
+  }
+
+  .more {
+    margin-top: 16px;
+    font-weight: 600;
+  }
+
+  .more a {
+    text-decoration-color: var(--green);
+  }
+</style>

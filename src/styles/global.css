@@ -1,0 +1,208 @@
+@font-face {
+  font-family: 'Anek Bangla Matra';
+  font-style: normal;
+  font-weight: 600;
+  font-display: block;
+  src: url('../fonts/anek-bangla-subset.woff2') format('woff2');
+  unicode-range: U+0020, U+0980-09FF;
+}
+
+:root {
+  --ground: #f2f4f4;
+  --ink: #121614;
+  --ink-2: #434c47;
+  --ink-3: #5c6661;
+  --rule: #d3d8d4;
+  --green: #006a4e;
+
+  --font-latin: 'Anek Latin Variable', system-ui, sans-serif;
+  --font-bangla: 'Anek Bangla Matra', 'Noto Sans Bengali', 'Bangla Sangam MN', sans-serif;
+
+  /* Anek Bangla headstroke, measured from the font: top and bottom of the bar, in em from the
+     top of a line box with line-height: 1. Every green line on the page is cut to this band. */
+  --matra-top-ratio: 0.1815;
+  --matra-bottom-ratio: 0.278;
+  --matra-top: calc(var(--matra-top-ratio) * 1em);
+  --matra-bottom: calc(var(--matra-bottom-ratio) * 1em);
+  --matra-thickness: calc(var(--matra-bottom) - var(--matra-top));
+  /* Lines run a hair past the glyph bar so its anti-aliased rim never shows; the top edge of the
+     bar sits on a fractional pixel at most sizes, so it gets the larger bleed. */
+  --matra-bleed-top: 0.014em;
+  --matra-bleed: 0.006em;
+  --matra-line-top: calc(var(--matra-top) - var(--matra-bleed-top));
+  --matra-line-height: calc(var(--matra-thickness) + var(--matra-bleed-top) + var(--matra-bleed));
+
+  --pad: clamp(16px, 5vw, 96px);
+  --gutter: clamp(16px, 2.2vw, 32px);
+  --stem: 1.5px;
+  --hang: 18px;
+  --section-gap: clamp(104px, 11vw, 176px);
+  /* Section heads are sized from the rail so the widest word (যোগাযোগ, 4.2em) always fits. */
+  --sh-size: min(4.25rem, (100vw - 2 * var(--pad)) * 0.0545);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --fs-small: 0.875rem;
+  --fs-body: 1.0625rem;
+  --fs-lede: clamp(1.25rem, 0.95rem + 1.05vw, 1.75rem);
+  --fs-title: clamp(1.375rem, 1.1rem + 0.8vw, 1.75rem);
+  --fs-value: 1.375rem;
+
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ground: #0d1210;
+    --ink: #e6ebe7;
+    --ink-2: #b2bcb6;
+    --ink-3: #8f9a94;
+    --rule: #2a332e;
+    --green: #3cb48a;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+  scrollbar-color: var(--rule) var(--ground);
+}
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font-latin);
+  font-size: var(--fs-body);
+  line-height: 1.55;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+dl,
+dd {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+::selection {
+  background: var(--green);
+  color: var(--ground);
+}
+
+a {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-color: var(--rule);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.22em;
+  transition: text-decoration-color 160ms ease-out;
+}
+
+a:hover {
+  text-decoration-color: var(--green);
+}
+
+:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.num {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* Page frame: one 12-column grid. The rail (columns 1-3) holds what hangs at the left of each
+   line; the content (columns 4-12) holds everything read. */
+
+.page {
+  padding-inline: var(--pad);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+}
+
+.rail {
+  grid-column: 1 / span 3;
+}
+
+.content {
+  grid-column: 4 / -1;
+}
+
+@media (max-width: 860px) {
+  :root {
+    --sh-size: clamp(2.5rem, 10vw, 3.75rem);
+  }
+
+  .rail,
+  .content {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Every section hangs from its line: a stem drops from the bottom of the section's matra down the
+   left edge of the content column to the foot of the section, and everything read sits beside it. */
+
+.section {
+  --stem-x: calc((100% - 11 * var(--gutter)) / 12 * 3 + 3 * var(--gutter));
+  position: relative;
+  padding-top: var(--section-gap);
+}
+
+.section::after {
+  content: '';
+  position: absolute;
+  left: var(--stem-x);
+  top: calc(var(--section-gap) + var(--sh-size) * var(--matra-bottom-ratio));
+  bottom: 0;
+  width: var(--stem);
+  background: var(--green);
+}
+
+.section .content {
+  padding-left: var(--hang);
+}
+
+@media (max-width: 860px) {
+  .section {
+    --stem-x: 0px;
+  }
+
+  .section .rail {
+    padding-left: var(--hang);
+  }
+}

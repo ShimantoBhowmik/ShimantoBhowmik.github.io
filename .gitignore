@@ -1,0 +1,12 @@
+node_modules
+dist
+.astro
+.DS_Store
+.vscode/
+
+# Local tooling and design-session scratch
+.claude/launch.json
+.claude/worktrees/
+.impeccable/mocks/
+.impeccable/review/
+.impeccable/questions/

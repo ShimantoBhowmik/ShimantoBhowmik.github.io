@@ -1,0 +1,36 @@
+{
+  "name": "shimantobhowmik",
+  "description": "Personal website of Shimanto Bhowmik",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "author": "Shimanto Bhowmik <bhowmikshimanto@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ShimantoBhowmik/ShimantoBhowmik.github.io"
+  },
+  "license": "MIT",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "node scripts/check-bangla.mjs && astro check && astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "format": "prettier --write .",
+    "lint": "prettier --check . && astro check",
+    "fonts": "python3 scripts/subset-bangla.py"
+  },
+  "dependencies": {
+    "@fontsource-variable/anek-latin": "^5.3.0",
+    "astro": "^7.3.8"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@fontsource-variable/anek-bangla": "^5.3.0",
+    "prettier": "^3.9.10",
+    "prettier-plugin-astro": "^1.1.1",
+    "typescript": "^6.0.3"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
