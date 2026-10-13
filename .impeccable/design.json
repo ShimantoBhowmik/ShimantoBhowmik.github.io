@@ -1,0 +1,404 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-13T18:25:12+00:00",
+  "title": "Design System: Shimanto Bhowmik",
+  "extensions": {
+    "colorMeta": {
+      "green": {
+        "role": "primary",
+        "displayName": "Bottle Green",
+        "canonical": "#006a4e",
+        "tonalRamp": [
+          "oklch(15% 0.11 163)",
+          "oklch(25% 0.11 163)",
+          "oklch(37% 0.11 163)",
+          "oklch(49% 0.11 163)",
+          "oklch(61% 0.11 163)",
+          "oklch(73% 0.11 163)",
+          "oklch(85% 0.11 163)",
+          "oklch(95% 0.11 163)"
+        ]
+      },
+      "green-dark": {
+        "role": "primary",
+        "displayName": "Bottle Green (dark scheme)",
+        "canonical": "#3cb48a",
+        "tonalRamp": [
+          "oklch(15% 0.11 163)",
+          "oklch(25% 0.11 163)",
+          "oklch(37% 0.11 163)",
+          "oklch(49% 0.11 163)",
+          "oklch(61% 0.11 163)",
+          "oklch(73% 0.11 163)",
+          "oklch(85% 0.11 163)",
+          "oklch(95% 0.11 163)"
+        ]
+      },
+      "ground": {
+        "role": "neutral",
+        "displayName": "Cool Paper",
+        "canonical": "#f2f4f4",
+        "tonalRamp": [
+          "oklch(15% 0.008 160)",
+          "oklch(25% 0.008 160)",
+          "oklch(37% 0.008 160)",
+          "oklch(49% 0.008 160)",
+          "oklch(61% 0.008 160)",
+          "oklch(73% 0.008 160)",
+          "oklch(85% 0.008 160)",
+          "oklch(95% 0.008 160)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#121614",
+        "tonalRamp": [
+          "oklch(15% 0.008 160)",
+          "oklch(25% 0.008 160)",
+          "oklch(37% 0.008 160)",
+          "oklch(49% 0.008 160)",
+          "oklch(61% 0.008 160)",
+          "oklch(73% 0.008 160)",
+          "oklch(85% 0.008 160)",
+          "oklch(95% 0.008 160)"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Ink Two",
+        "canonical": "#434c47",
+        "tonalRamp": [
+          "oklch(15% 0.008 160)",
+          "oklch(25% 0.008 160)",
+          "oklch(37% 0.008 160)",
+          "oklch(49% 0.008 160)",
+          "oklch(61% 0.008 160)",
+          "oklch(73% 0.008 160)",
+          "oklch(85% 0.008 160)",
+          "oklch(95% 0.008 160)"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Ink Three",
+        "canonical": "#5c6661",
+        "tonalRamp": [
+          "oklch(15% 0.008 160)",
+          "oklch(25% 0.008 160)",
+          "oklch(37% 0.008 160)",
+          "oklch(49% 0.008 160)",
+          "oklch(61% 0.008 160)",
+          "oklch(73% 0.008 160)",
+          "oklch(85% 0.008 160)",
+          "oklch(95% 0.008 160)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule Grey",
+        "canonical": "#d3d8d4",
+        "tonalRamp": [
+          "oklch(15% 0.008 160)",
+          "oklch(25% 0.008 160)",
+          "oklch(37% 0.008 160)",
+          "oklch(49% 0.008 160)",
+          "oklch(61% 0.008 160)",
+          "oklch(73% 0.008 160)",
+          "oklch(85% 0.008 160)",
+          "oklch(95% 0.008 160)"
+        ]
+      },
+      "ground-dark": {
+        "role": "neutral",
+        "displayName": "Cool Paper (dark scheme)",
+        "canonical": "#0d1210",
+        "tonalRamp": [
+          "oklch(15% 0.008 160)",
+          "oklch(25% 0.008 160)",
+          "oklch(37% 0.008 160)",
+          "oklch(49% 0.008 160)",
+          "oklch(61% 0.008 160)",
+          "oklch(73% 0.008 160)",
+          "oklch(85% 0.008 160)",
+          "oklch(95% 0.008 160)"
+        ]
+      },
+      "ink-dark": {
+        "role": "neutral",
+        "displayName": "Ink (dark scheme)",
+        "canonical": "#e6ebe7",
+        "tonalRamp": [
+          "oklch(15% 0.008 160)",
+          "oklch(25% 0.008 160)",
+          "oklch(37% 0.008 160)",
+          "oklch(49% 0.008 160)",
+          "oklch(61% 0.008 160)",
+          "oklch(73% 0.008 160)",
+          "oklch(85% 0.008 160)",
+          "oklch(95% 0.008 160)"
+        ]
+      },
+      "ink-2-dark": {
+        "role": "neutral",
+        "displayName": "Ink Two (dark scheme)",
+        "canonical": "#b2bcb6",
+        "tonalRamp": [
+          "oklch(15% 0.008 160)",
+          "oklch(25% 0.008 160)",
+          "oklch(37% 0.008 160)",
+          "oklch(49% 0.008 160)",
+          "oklch(61% 0.008 160)",
+          "oklch(73% 0.008 160)",
+          "oklch(85% 0.008 160)",
+          "oklch(95% 0.008 160)"
+        ]
+      },
+      "ink-3-dark": {
+        "role": "neutral",
+        "displayName": "Ink Three (dark scheme)",
+        "canonical": "#8f9a94",
+        "tonalRamp": [
+          "oklch(15% 0.008 160)",
+          "oklch(25% 0.008 160)",
+          "oklch(37% 0.008 160)",
+          "oklch(49% 0.008 160)",
+          "oklch(61% 0.008 160)",
+          "oklch(73% 0.008 160)",
+          "oklch(85% 0.008 160)",
+          "oklch(95% 0.008 160)"
+        ]
+      },
+      "rule-dark": {
+        "role": "neutral",
+        "displayName": "Rule Grey (dark scheme)",
+        "canonical": "#2a332e",
+        "tonalRamp": [
+          "oklch(15% 0.008 160)",
+          "oklch(25% 0.008 160)",
+          "oklch(37% 0.008 160)",
+          "oklch(49% 0.008 160)",
+          "oklch(61% 0.008 160)",
+          "oklch(73% 0.008 160)",
+          "oklch(85% 0.008 160)",
+          "oklch(95% 0.008 160)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The Bangla name in the hero only, green, full-bleed matra through its headstroke."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "The Bangla word of each section head, green, in the rail; its headstroke becomes the section matra."
+      },
+      "headline-latin": {
+        "displayName": "Headline Latin",
+        "purpose": "The contact email address only, sized from the content column so it never breaks."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "The one-sentence introduction at the top of the hero."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Place names, hero column names, English section titles."
+      },
+      "value": {
+        "displayName": "Value",
+        "purpose": "Result figures, tabular, stacked above their label."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Detail prose, max 66ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Years, locations, result labels, stacks, sub-labels, in Ink Three."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Easing for every line motion: draw, drop, stem thickening."
+      },
+      {
+        "name": "link-underline",
+        "value": "160ms ease-out",
+        "purpose": "Underline colour shift on link hover."
+      },
+      {
+        "name": "stem-thicken",
+        "value": "220ms",
+        "purpose": "Stem width 1.5px to 4px on hover or focus-within."
+      },
+      {
+        "name": "hang-in",
+        "value": "700ms, opacity 0 and translateY(-0.05em) to rest",
+        "purpose": "Bangla name glyphs appear first on load."
+      },
+      {
+        "name": "draw",
+        "value": "1200ms from 380ms, scaleX(0) from left",
+        "purpose": "Matra drawn across the name last, once, on load."
+      },
+      {
+        "name": "drop",
+        "value": "800ms from 900ms + 90ms per column, scaleY(0) from top",
+        "purpose": "Hero stems drop from the matra."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: no-preference only",
+        "purpose": "Load motion runs only when the user has not asked for reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "hero-two-col",
+        "value": "1080px"
+      },
+      {
+        "name": "stack",
+        "value": "860px"
+      },
+      {
+        "name": "projects-one-col",
+        "value": "720px"
+      },
+      {
+        "name": "hero-one-col",
+        "value": "560px"
+      }
+    ],
+    "fonts": {
+      "bangla": "Anek Bangla 600 subset (src/fonts/anek-bangla-subset.woff2), unicode-range U+0020, U+0980-09FF, font-display block; subset includes U+0020 so it owns the line box. Rebuild with scripts/subset-bangla.py; scripts/check-bangla.mjs fails the build on uncovered characters.",
+      "latin": "@fontsource-variable/anek-latin (wght axis)"
+    }
+  },
+  "components": [
+    {
+      "name": "Link",
+      "kind": "custom",
+      "refersTo": "link",
+      "description": "Underlined text link; grey underline at rest, green on hover.",
+      "html": "<p class=\"ds-body\">Read the <a class=\"ds-link\" href=\"#\">paper on arXiv</a>.</p>",
+      "css": ".ds-body{font-family:var(--font-latin);font-size:1.0625rem;line-height:1.55;color:var(--ink-2,#434c47)}.ds-link{color:var(--ink,#121614);text-decoration-line:underline;text-decoration-color:var(--rule,#d3d8d4);text-decoration-thickness:1.5px;text-underline-offset:0.22em;transition:text-decoration-color 160ms ease-out}.ds-link:hover{text-decoration-color:var(--green,#006a4e)}.ds-link:focus-visible{outline:2px solid var(--green,#006a4e);outline-offset:3px;border-radius:2px}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "link-primary",
+      "description": "Top-right row of text links; the primary action carries a 3px green underline.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-primary\" href=\"#\">Email me</a><a href=\"#\">Resume</a><a href=\"#\">GitHub</a><a href=\"#\">LinkedIn</a></nav>",
+      "css": ".ds-nav{display:flex;flex-wrap:wrap;gap:8px 28px;font-family:var(--font-latin);font-size:1.0625rem;font-weight:500}.ds-nav a{color:var(--ink,#121614);text-decoration-line:underline;text-decoration-color:var(--rule,#d3d8d4);text-decoration-thickness:1.5px;text-underline-offset:0.22em;transition:text-decoration-color 160ms ease-out}.ds-nav a:hover{text-decoration-color:var(--green,#006a4e)}.ds-nav a:focus-visible{outline:2px solid var(--green,#006a4e);outline-offset:3px;border-radius:2px}.ds-nav .ds-nav-primary{font-weight:650;text-decoration-color:var(--green,#006a4e);text-decoration-thickness:3px}"
+    },
+    {
+      "name": "Section Head",
+      "kind": "custom",
+      "refersTo": "section-head",
+      "description": "Bangla section word in the rail; its headstroke runs edge to edge as the matra, the English title sits below it in the content column, and a stem hangs from the matra.",
+      "html": "<div class=\"ds-sh\"><span class=\"ds-sh-bn\" lang=\"bn\">কাজ</span><h2 class=\"ds-sh-en\">Work</h2></div>",
+      "css": ".ds-sh{position:relative;display:grid;grid-template-columns:3fr 9fr;column-gap:24px;padding-inline:24px;font-size:4rem;min-height:2.5em}.ds-sh::before{content:'';position:absolute;inset-inline:0;top:calc(0.1815em - 0.014em);height:calc(0.278em - 0.1815em + 0.02em);background:var(--green,#006a4e)}.ds-sh::after{content:'';position:absolute;left:calc(24px + (100% - 48px - 24px) * 0.25 + 24px);top:0.278em;bottom:0;width:1.5px;background:var(--green,#006a4e)}.ds-sh-bn{position:relative;font-family:var(--font-bangla);font-weight:600;line-height:1;color:var(--green,#006a4e);white-space:nowrap}.ds-sh-en{margin:0;padding-left:18px;padding-top:calc(4rem * 0.278 + 0.625rem);font-family:var(--font-latin);font-size:1.5rem;font-weight:600;line-height:1.2;letter-spacing:-0.01em;color:var(--ink,#121614)}"
+    },
+    {
+      "name": "Entry",
+      "kind": "card",
+      "refersTo": "entry",
+      "description": "A place hanging from the section stem: name and years in the rail, stints with results in the content; the stem beside it thickens on hover.",
+      "html": "<article class=\"ds-entry\" tabindex=\"0\"><header><h3 class=\"ds-org\">Amazon AGI</h3><p class=\"ds-meta\"><span class=\"ds-num\">2023 – 2025</span> · Seattle</p></header><div class=\"ds-body\"><h4 class=\"ds-focus\">Alexa+ experimentation platform</h4><p class=\"ds-detail\">Built the pipeline that moves experiments from proposal to live traffic.</p><dl class=\"ds-results\"><div><dt>experiment setup</dt><dd class=\"ds-num\">days → minutes</dd></div><div><dt>model releases</dt><dd class=\"ds-num\">60% faster</dd></div></dl></div></article>",
+      "css": ".ds-entry{position:relative;display:grid;grid-template-columns:3fr 9fr;column-gap:24px;padding-block:32px;font-family:var(--font-latin);color:var(--ink,#121614)}.ds-entry::after{content:'';position:absolute;left:calc(25% + 6px);top:0;bottom:0;width:1.5px;background:var(--green,#006a4e)}.ds-entry::before{content:'';position:absolute;z-index:1;left:calc(25% + 6px);top:0;bottom:0;width:4px;background:var(--green,#006a4e);transform:scaleX(0.375);transform-origin:left center;opacity:0;transition:transform 220ms cubic-bezier(0.16,1,0.3,1),opacity 220ms cubic-bezier(0.16,1,0.3,1)}.ds-entry:hover::before,.ds-entry:focus-within::before,.ds-entry:focus-visible::before{transform:scaleX(1);opacity:1}.ds-entry:focus-visible{outline:none}.ds-body{padding-left:18px}.ds-org{margin:0;font-size:1.5rem;font-weight:600;line-height:1.2;letter-spacing:-0.01em}.ds-meta{margin:6px 0 0;font-size:0.875rem;color:var(--ink-3,#5c6661)}.ds-num{font-variant-numeric:tabular-nums lining-nums}.ds-focus{margin:0;max-width:44ch;font-size:1.1875rem;font-weight:600;line-height:1.3}.ds-detail{margin:10px 0 0;max-width:66ch;color:var(--ink-2,#434c47);line-height:1.55}.ds-results{display:flex;flex-wrap:wrap;gap:12px 40px;margin:18px 0 0}.ds-results div{display:flex;flex-direction:column-reverse}.ds-results dd{margin:0;font-size:1.375rem;font-weight:600;line-height:1.15;letter-spacing:-0.01em}.ds-results dt{font-size:0.875rem;color:var(--ink-3,#5c6661)}"
+    },
+    {
+      "name": "Hero Name",
+      "kind": "custom",
+      "refersTo": "hero-name",
+      "description": "The Bangla name with the matra fused through its headstroke; stems pass behind glyphs via a ground-coloured text-stroke knockout, roots painted above.",
+      "html": "<div class=\"ds-hero\"><div class=\"ds-name\"><span class=\"ds-glyphs\" lang=\"bn\">সীমান্ত ভৌমিক</span></div><ol class=\"ds-cols\"><li><span class=\"ds-col-org\">AWS</span></li><li><span class=\"ds-col-org\">FinPilot</span></li></ol></div>",
+      "css": ".ds-hero{--n:6rem;position:relative;font-family:var(--font-latin)}.ds-name{position:relative;font-family:var(--font-bangla);font-size:var(--n);font-weight:600;line-height:1;color:var(--green,#006a4e);white-space:nowrap}.ds-glyphs{position:relative;z-index:1;display:inline-block;margin-left:18px;-webkit-text-stroke:0.08em var(--ground,#f2f4f4);paint-order:stroke fill}.ds-name::after{content:'';position:absolute;inset-inline:0;z-index:2;top:calc(0.1815em - 0.014em);height:calc(0.278em - 0.1815em + 0.02em);background:currentColor}.ds-cols{display:grid;grid-template-columns:1fr 1fr;column-gap:24px;margin:24px 0 0;padding:0;list-style:none}.ds-cols li{position:relative;padding:0 8px 4px 18px}.ds-cols li::before,.ds-cols li::after{content:'';position:absolute;left:0;top:calc(-1 * (var(--n) * (1 - 0.278) + 24px));width:1.5px;background:var(--green,#006a4e);transition:width 220ms cubic-bezier(0.16,1,0.3,1)}.ds-cols li::before{bottom:0}.ds-cols li::after{z-index:2;height:calc(var(--n) * 0.08)}.ds-cols li:hover::before,.ds-cols li:hover::after{width:4px}.ds-col-org{font-size:1.5rem;font-weight:600;color:var(--ink,#121614)}"
+    },
+    {
+      "name": "Ledger",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "Awards and background: tabular years column, then name, note and source; separated by space, never lines.",
+      "html": "<ul class=\"ds-ledger\"><li><span class=\"ds-ly\">2025</span><span>Outstanding Undergraduate Scholar Award<span class=\"ds-from\">RIT</span></span></li><li><span class=\"ds-ly\">2018</span><span>APICTA<span class=\"ds-from\">Asia Pacific ICT Alliance</span></span></li></ul>",
+      "css": ".ds-ledger{margin:0;padding:0;list-style:none;font-family:var(--font-latin);font-size:1.0625rem;color:var(--ink,#121614)}.ds-ledger li{display:grid;grid-template-columns:6.5rem 1fr;column-gap:12px;padding-block:8px}.ds-ly{color:var(--ink-3,#5c6661);font-variant-numeric:tabular-nums lining-nums}.ds-from{display:block;font-size:0.875rem;color:var(--ink-3,#5c6661)}"
+    },
+    {
+      "name": "Contact Email",
+      "kind": "custom",
+      "refersTo": "contact-email",
+      "description": "The address set large in Ink with a 0.06em green underline; the closing action.",
+      "html": "<a class=\"ds-email\" href=\"#\">bhowmikshimanto@gmail.com</a>",
+      "css": ".ds-email{display:inline-block;font-family:var(--font-latin);font-size:2.5rem;font-weight:600;line-height:1.1;letter-spacing:-0.02em;color:var(--ink,#121614);text-decoration-line:underline;text-decoration-color:var(--green,#006a4e);text-decoration-thickness:0.06em;text-underline-offset:0.16em}.ds-email:focus-visible{outline:2px solid var(--green,#006a4e);outline-offset:3px;border-radius:2px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Matra",
+    "overview": "One horizontal line, the matra, crosses the page and everything hangs from it, the way Bangla letters hang from their headstroke. The line is not drawn beside the type; it is the type. Every green rule on the page is the headstroke of a Bangla word, measured from the font and run edge to edge, and every vertical green line is a stem dropped from that headstroke down the edge of the content it carries.\n\nThe world is flat, cool paper and near-black ink with one bottle green (Bangladesh flag green) that owns every structural line. Type and line carry every value: there are no cards, icons, photographs, shadows or gradients, and depth comes only from flat overlap where a stem passes behind a letter. Density is moderate and editorial; results are set as figures on a strict tabular column, never as badges.\n\nMotion follows handwritten Bangla: the letters appear first, the headstroke is drawn across them last, once, on load, and the stems drop from it. Reading an entry thickens the stretch of stem beside it.",
+    "keyCharacteristics": [
+      "One green, used only for structural lines, the Bangla words those lines belong to, and emphasis underlines.",
+      "Every horizontal green line is a Bangla headstroke run full-bleed; every vertical green line is a stem hanging from one.",
+      "A single axis: the left edge of the content column, with all read content indented 18px off its stem.",
+      "Two families: Anek Bangla (subset) for Bangla, Anek Latin for all Latin; tabular lining figures for every date and number.",
+      "Flat. No borders between items, no shadows, no gradients, no icons, no imagery."
+    ],
+    "rules": [
+      {
+        "name": "The One Green Rule",
+        "body": "Green belongs to the line system and the Bangla words it comes from. It may underline the primary action and appear on hover and focus; it never fills a surface, a button, or a badge.",
+        "section": "colors"
+      },
+      {
+        "name": "The No Grey Divider Rule",
+        "body": "Items are separated by space alone. Rule Grey exists only under resting links; there are no borders, hairlines or dividers anywhere.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tabular Column Rule",
+        "body": "Every date and number uses tabular lining figures. Years read as a strict column.",
+        "section": "typography"
+      },
+      {
+        "name": "The Space-Owns-The-Line Rule",
+        "body": "The Bangla subset must contain U+0020. CSS takes line-box metrics from the first font that covers the space; if the subset lacks it, the Latin face sets the line box and every matra measurement drifts off the glyph bar. Re-run the subset script whenever Bangla text changes; the coverage check fails the build on a missing character.",
+        "section": "typography"
+      },
+      {
+        "name": "The Headstroke Rule",
+        "body": "Every horizontal green line is a Bangla word's headstroke, cut to the measured matra band and run edge to edge of the viewport. Never draw a green line that is not attached to a Bangla word.",
+        "section": "layout"
+      },
+      {
+        "name": "The Hanging Rule",
+        "body": "Every section hangs a `stem` (1.5px) green line from the bottom of its matra down the left edge of the content column to the foot of the section. All content in the section sits `hang` (18px) to the right of it. On phones the stem moves to the page edge and the rail is indented 18px too.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Overlap Rule",
+        "body": "Depth is shown only by a line passing behind a letter. No shadows, no blur, no gradients, no tonal surfaces.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** cut every green horizontal line to the matra band (`matra-top` 0.1815em to `matra-bottom` 0.278em, plus bleeds) of a Bangla word set at line-height 1, and run it edge to edge.",
+      "**Do** hang a 1.5px green stem from each section's matra down the content-column edge and indent all content 18px beside it.",
+      "**Do** keep U+0020 in the Bangla subset and re-run the subset and coverage scripts whenever Bangla text changes.",
+      "**Do** pass stems behind glyphs with a ground-coloured text-stroke knockout and paint their roots above the glyphs.",
+      "**Do** set every date and number in tabular lining figures.",
+      "**Do** show each place by organisation, years and the work done, with its measured result as a figure."
+    ],
+    "donts": [
+      "**Don't** use grey dividers, borders or hairlines between items; separate with space.",
+      "**Don't** use shadows, gradients, icons, photographs or other imagery.",
+      "**Don't** use green for fills, buttons, badges or decorative lines not attached to a Bangla word.",
+      "**Don't** add a third type family or set Latin in the Bangla face.",
+      "**Don't** show job titles anywhere in content."
+    ]
+  }
+}

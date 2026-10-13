@@ -1,0 +1,7 @@
+dist
+node_modules
+.astro
+.impeccable
+package-lock.json
+public/resume.pdf
+DESIGN.md

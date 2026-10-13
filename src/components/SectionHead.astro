@@ -1,0 +1,71 @@
+---
+interface Props {
+  id: string;
+  en: string;
+  bn: string;
+}
+
+const { id, en, bn } = Astro.props;
+---
+
+<header class="sh grid">
+  <span class="sh-bn rail" lang="bn" aria-hidden="true">
+    {bn}
+  </span>
+  <h2 class="sh-en content" id={id}>
+    {en}
+  </h2>
+</header>
+
+<style>
+  .sh {
+    position: relative;
+    margin-inline: calc(-1 * var(--pad));
+    padding-inline: var(--pad);
+    font-size: var(--sh-size);
+  }
+
+  /* The section's line is the Bangla word's headstroke, run edge to edge. */
+  .sh::before {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    top: var(--matra-line-top);
+    height: var(--matra-line-height);
+    background: var(--green);
+  }
+
+  .sh-bn {
+    position: relative;
+    font-family: var(--font-bangla);
+    font-weight: 600;
+    line-height: 1;
+    color: var(--green);
+    white-space: nowrap;
+  }
+
+  .sh-en {
+    padding-top: calc(var(--sh-size) * var(--matra-bottom-ratio) + 0.625rem);
+    font-size: var(--fs-title);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    scroll-margin-top: 24px;
+  }
+
+  /* One axis on phones too: the word, then its title, both hanging right of the stem. */
+  @media (max-width: 860px) {
+    .sh {
+      display: block;
+    }
+
+    .sh-bn {
+      display: block;
+      padding-left: var(--hang);
+    }
+
+    .sh-en {
+      padding-top: 0.75rem;
+    }
+  }
+</style>

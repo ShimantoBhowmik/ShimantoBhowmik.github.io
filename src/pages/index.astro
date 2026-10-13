@@ -1,0 +1,349 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Entry from '../components/Entry.astro';
+import {
+  person,
+  links,
+  work,
+  research,
+  projects,
+  smallProjects,
+  awards,
+  background,
+  sections,
+} from '../data/profile';
+
+const year = new Date().getFullYear();
+---
+
+<Base>
+  <div class="page">
+    <Hero />
+
+    <main>
+      <section class="section" aria-labelledby="work">
+        <SectionHead id="work" {...sections.work} />
+        <div class="entries">
+          {work.map((place) => (
+            <Entry place={place} />
+          ))}
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="research">
+        <SectionHead id="research" {...sections.research} />
+        <div class="entries">
+          {research.map((place) => (
+            <Entry place={place} />
+          ))}
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="projects">
+        <SectionHead id="projects" {...sections.projects} />
+        <div class="grid">
+          <ul class="content projects">
+            {projects.map((project) => (
+              <li class="project">
+                <h3 class="project-name">
+                  {project.links[0] ? (
+                    <a href={project.links[0].href}>{project.name}</a>
+                  ) : (
+                    project.name
+                  )}
+                </h3>
+                <p class="project-summary">{project.summary}</p>
+                <p class="stack">{project.stack.join(' · ')}</p>
+                {project.links.length > 1 && (
+                  <p class="project-links">
+                    {project.links.map((link) => (
+                      <a href={link.href}>{link.label}</a>
+                    ))}
+                  </p>
+                )}
+              </li>
+            ))}
+          </ul>
+
+          <div class="content smaller">
+            <h3 class="sub">Smaller things</h3>
+            <ul>
+              {smallProjects.map((project) => (
+                <li class="small">
+                  <span class="small-name">
+                    {project.links[0] ? (
+                      <a href={project.links[0].href}>{project.name}</a>
+                    ) : (
+                      project.name
+                    )}
+                  </span>
+                  <span class="small-summary">{project.summary}</span>
+                  <span class="stack">{project.stack.join(' · ')}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="recognition">
+        <SectionHead id="recognition" {...sections.recognition} />
+        <div class="grid">
+          <div class="content recognition">
+            <div>
+              <h3 class="sub">Awards</h3>
+              <ul class="ledger">
+                {awards.map((award) => (
+                  <li>
+                    <span class="ledger-years num">{award.years}</span>
+                    <span>
+                      {award.name}
+                      {award.note && <span class="note">{award.note}</span>}
+                      <span class="from">{award.from}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 class="sub">Background</h3>
+              <ul class="ledger">
+                {background.map((item) => (
+                  <li>
+                    <span class="ledger-years num">{item.years}</span>
+                    <span>{item.line}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact" aria-labelledby="contact">
+        <SectionHead id="contact" {...sections.contact} />
+        <div class="grid">
+          <div class="content">
+            <a class="email" href={`mailto:${person.email}`}>
+              {person.email}
+            </a>
+            <ul class="elsewhere">
+              <li>
+                <a href={links.resume}>Resume (PDF)</a>
+              </li>
+              <li>
+                <a href={links.github}>GitHub</a>
+              </li>
+              <li>
+                <a href={links.linkedin}>LinkedIn</a>
+              </li>
+              <li>
+                <a href={links.youtube}>YouTube</a>, where I play video games for fun
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer grid">
+      <p class="content">
+        <span class="num">© {year}</span> {person.name} · {person.location}. Set in Anek Latin and
+        Anek Bangla.
+      </p>
+    </footer>
+  </div>
+</Base>
+
+<style>
+  .entries,
+  .section > .grid {
+    margin-top: clamp(36px, 4.5vw, 64px);
+  }
+
+  .sub {
+    font-size: var(--fs-small);
+    font-weight: 600;
+    color: var(--ink-3);
+  }
+
+  .stack {
+    font-size: var(--fs-small);
+    color: var(--ink-3);
+  }
+
+  /* Projects */
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--gutter);
+  }
+
+  .project {
+    display: grid;
+    align-content: start;
+    gap: 6px;
+    padding-block: 18px 22px;
+  }
+
+  .project:nth-child(-n + 2) {
+    padding-top: 0;
+  }
+
+  .project-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  .project-name a {
+    text-decoration-color: var(--rule);
+  }
+
+  .project-name a:hover {
+    text-decoration-color: var(--green);
+  }
+
+  .project-summary {
+    max-width: 46ch;
+    color: var(--ink-2);
+    text-wrap: pretty;
+  }
+
+  .project-links {
+    display: flex;
+    gap: 18px;
+    font-size: var(--fs-small);
+    font-weight: 500;
+  }
+
+  .smaller {
+    margin-top: clamp(40px, 5vw, 64px);
+  }
+
+  .smaller ul {
+    margin-top: 12px;
+  }
+
+  .small {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 5fr) minmax(0, 3fr);
+    column-gap: var(--gutter);
+    padding-block: 8px;
+  }
+
+  .small-name {
+    font-weight: 600;
+    overflow-wrap: anywhere;
+  }
+
+  .small-summary {
+    color: var(--ink-2);
+  }
+
+  .small .stack {
+    align-self: center;
+  }
+
+  /* Recognition */
+  .recognition {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    column-gap: calc(var(--gutter) * 2);
+    row-gap: 48px;
+  }
+
+  .ledger {
+    margin-top: 12px;
+  }
+
+  .ledger li {
+    display: grid;
+    grid-template-columns: 6.5rem minmax(0, 1fr);
+    column-gap: 12px;
+    padding-block: 8px;
+  }
+
+  .ledger-years {
+    color: var(--ink-3);
+  }
+
+  .note {
+    display: block;
+    max-width: 52ch;
+    font-size: var(--fs-small);
+    color: var(--ink-2);
+  }
+
+  .from {
+    display: block;
+    font-size: var(--fs-small);
+    color: var(--ink-3);
+  }
+
+  /* Contact */
+  /* The address is 13.3em wide; size it from the content column so it never breaks. */
+  .email {
+    display: inline-block;
+    font-size: min(4.25rem, (100vw - 2 * var(--pad)) * 0.055);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    text-decoration-color: var(--green);
+    text-decoration-thickness: 0.06em;
+    text-underline-offset: 0.16em;
+    overflow-wrap: anywhere;
+  }
+
+  .elsewhere {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 32px;
+    margin-top: clamp(28px, 3vw, 40px);
+    color: var(--ink-2);
+  }
+
+  .elsewhere a {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .footer {
+    margin-top: clamp(96px, 10vw, 160px);
+    padding-left: var(--hang);
+    padding-block: 24px 40px;
+    font-size: var(--fs-small);
+    color: var(--ink-3);
+  }
+
+  @media (max-width: 860px) {
+    .recognition {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .email {
+      font-size: calc((100vw - 2 * var(--pad)) * 0.0735);
+    }
+  }
+
+  @media (max-width: 720px) {
+    .projects {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .project:nth-child(2) {
+      padding-top: 18px;
+    }
+
+    .small {
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 2px;
+    }
+
+    .ledger li {
+      grid-template-columns: 5.25rem minmax(0, 1fr);
+    }
+  }
+</style>
