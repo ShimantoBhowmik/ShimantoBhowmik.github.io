@@ -221,20 +221,22 @@ for (let y = Number(timeline[0].start.slice(0, 4)); y <= today.getFullYear(); y+
   }
 
   /* The signature motion: the track draws from the first start to today at a steady speed, and
-     each stop arrives as the line reaches it. Everything is visible without it. */
+     each stop arrives as the line reaches it. Everything is visible without it. Keyframes define
+     only a `from` state, so `backwards` looks the same as `both` but lets each animation end and
+     release its compositor layer. */
   @media (prefers-reduced-motion: no-preference) and (min-width: 641px) {
     .stops::before {
       transform-origin: left center;
-      animation: track-draw var(--draw) linear var(--draw-delay) both;
+      animation: track-draw var(--draw) linear var(--draw-delay) backwards;
     }
 
     .stop {
       animation: stop-arrive 420ms var(--ease-out) calc(var(--draw-delay) + var(--t) * var(--draw))
-        both;
+        backwards;
     }
 
     .years {
-      animation: stop-arrive 600ms var(--ease-out) calc(var(--draw-delay) + var(--draw)) both;
+      animation: stop-arrive 600ms var(--ease-out) calc(var(--draw-delay) + var(--draw)) backwards;
     }
   }
 
