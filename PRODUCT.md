@@ -27,7 +27,7 @@ Engineers, hiring managers, recruiters, and collaborators who arrive from a resu
 ## Brand commitments
 
 - **No job titles anywhere.** Do not show role titles such as "Intern", "Research Assistant", or "Software Engineer". Present each place by organization, dates, and the work done. The overall impression must be a mid-level engineer.
-- The site must be his own: nothing carried over from Brittany Chiang's v4 template (navy/green palette, mono-numbered headings, loader, side email rails, scroll reveals).
+- The site must be his own and original: no navy/teal developer-portfolio look, mono-numbered headings, loaders, side email rails or scroll reveals.
 - Minimal by preference.
 
 ## Content to carry
@@ -43,7 +43,7 @@ Engineers, hiring managers, recruiters, and collaborators who arrive from a resu
 
 ## Removed
 
-- The four template blog posts (Dark Mode Toggle, Clickable Cards, Docker Compose Error, WordPress Publishing Error) are not his and are not carried.
+- The four old blog posts (Dark Mode Toggle, Clickable Cards, Docker Compose Error, WordPress Publishing Error) were not his and are not carried.
 
 ## Open decisions
 
