@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import SectionHead from '../components/SectionHead.astro';
 import Entry from '../components/Entry.astro';
+import Timeline from '../components/Timeline.astro';
 import {
   person,
   links,
@@ -25,6 +26,11 @@ const year = new Date().getFullYear();
     <main>
       <section class="section" aria-labelledby="work">
         <SectionHead id="work" {...sections.work} />
+        <div class="grid">
+          <div class="content">
+            <Timeline />
+          </div>
+        </div>
         <div class="entries">
           {work.map((place) => (
             <Entry place={place} />
