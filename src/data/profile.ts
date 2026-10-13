@@ -48,7 +48,8 @@ export const person = {
   nameBn: 'সীমান্ত ভৌমিক',
   location: 'Seattle',
   email: 'bhowmikshimanto@gmail.com',
-  lede: 'builds the infrastructure machine learning ships on: experimentation platforms, release pipelines and model evaluation. Currently working on security at AWS.',
+  statement: 'I build the infrastructure machine learning ships on.',
+  lede: 'Experimentation platforms, model release pipelines and LLM evaluation, from Amazon AGI and Stanford AI Lab to security at AWS today.',
   description:
     'Shimanto Bhowmik builds the infrastructure machine learning ships on: experimentation platforms, release pipelines and model evaluation. Seattle.',
 };
@@ -59,29 +60,6 @@ export const links = {
   linkedin: 'https://www.linkedin.com/in/shimantobhowmik',
   youtube: 'https://www.youtube.com/@scarstark',
 };
-
-// The four columns hanging from the name in the first viewport, newest first.
-export const recent: { id: string; org: string; years: string; line: string }[] = [
-  { id: 'aws', org: 'AWS', years: '2026 – now', line: 'Working on AWS Security.' },
-  {
-    id: 'finpilot',
-    org: 'FinPilot',
-    years: '2026',
-    line: 'CRM sync engine that cut client onboarding setup by 85%.',
-  },
-  {
-    id: 'amazon-agi',
-    org: 'Amazon AGI',
-    years: '2023 – 2025',
-    line: 'Alexa+ experiments from days to minutes; model releases 60% faster.',
-  },
-  {
-    id: 'stanford',
-    org: 'Stanford AI Lab',
-    years: '2024 – 2025',
-    line: '8 Bengali benchmarks, 10 open LLMs: where Bengali trails English.',
-  },
-];
 
 export interface Stop {
   /** Anchor of the entry this stop links to. */

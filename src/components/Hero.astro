@@ -1,12 +1,16 @@
 ---
-import { person, links, recent } from '../data/profile';
+import Timeline from './Timeline.astro';
+import { person, links } from '../data/profile';
 ---
 
 <section class="hero" aria-labelledby="name">
-  <div class="top grid">
-    <p class="lede">
-      <strong>{person.name}</strong> {person.lede}
-    </p>
+  <div class="bar">
+    <h1 class="who" id="name">
+      {person.name}
+      <span class="signature" lang="bn" aria-hidden="true">
+        {person.nameBn}
+      </span>
+    </h1>
     <nav class="actions" aria-label="Contact and profiles">
       <a class="primary" href={`mailto:${person.email}`}>
         Email me
@@ -17,65 +21,49 @@ import { person, links, recent } from '../data/profile';
     </nav>
   </div>
 
-  <div class="hang">
-    <h1 class="name" id="name">
-      <span class="glyphs" lang="bn" aria-hidden="true">
-        {person.nameBn}
-      </span>
-      <span class="sr-only">{person.name}</span>
-    </h1>
-    <ol class="cols" aria-label="Recent work">
-      {recent.map((item, i) => (
-        <li style={`--i: ${i}`}>
-          <a href={`#${item.id}`}>
-            <span class="org">{item.org}</span>
-            <span class="years num">{item.years}</span>
-            <span class="line">{item.line}</span>
-          </a>
-        </li>
-      ))}
-    </ol>
-  </div>
+  <p class="statement">{person.statement}</p>
+  <p class="lede">{person.lede}</p>
+
+  <Timeline />
 </section>
 
 <style>
   .hero {
-    padding-top: clamp(24px, 4vw, 48px);
+    padding-top: clamp(20px, 3.5vw, 40px);
   }
 
-  .top {
-    align-items: start;
-    row-gap: 24px;
+  .bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px 32px;
   }
 
-  .lede {
-    grid-column: 1 / span 7;
-    max-width: 34ch;
-    font-size: var(--fs-lede);
-    line-height: 1.3;
-    letter-spacing: -0.01em;
-    color: var(--ink-2);
-    text-wrap: pretty;
+  .who {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: 14px;
+    font-size: 1.25rem;
+    font-weight: 650;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
   }
 
-  .lede strong {
-    color: var(--ink);
+  /* The name in Bangla, signed beside it in the world's green. */
+  .signature {
+    font-family: var(--font-bangla);
+    font-size: 1.375rem;
     font-weight: 600;
+    color: var(--green);
   }
 
   .actions {
-    grid-column: 9 / -1;
-    justify-self: end;
     display: flex;
     flex-wrap: wrap;
     gap: 8px 28px;
-    padding-top: 0.35em;
-    font-size: var(--fs-body);
     font-weight: 500;
-  }
-
-  .actions a {
-    text-decoration-color: var(--rule);
   }
 
   .actions .primary {
@@ -84,197 +72,33 @@ import { person, links, recent } from '../data/profile';
     text-decoration-thickness: 3px;
   }
 
-  .actions a:hover {
-    text-decoration-color: var(--green);
-  }
-
-  /* The name and everything under it hang from one line. */
-  .hang {
-    --name-size: clamp(3.25rem, 12.2vw, 12.5rem);
-    --below-name: max(var(--name-size) * 0.16, 24px);
-    position: relative;
-    margin-top: clamp(56px, 11vh, 150px);
-  }
-
-  .name {
-    position: relative;
-    margin-inline: calc(-1 * var(--pad));
-    padding-inline: var(--pad);
-    font-family: var(--font-bangla);
-    font-size: var(--name-size);
+  /* The hero says what he does, at a size that holds the first screen on short laptops too. */
+  .statement {
+    max-width: 19ch;
+    margin-top: clamp(48px, 9vh, 112px);
+    font-size: clamp(2.5rem, min(5.4vw, 8.6vh), 5.5rem);
     font-weight: 600;
-    line-height: 1;
-    color: var(--green);
-    white-space: nowrap;
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
   }
 
-  /* Stems pass behind the letters with a clean break, the way a hand-drawn line crosses
-     another: a ground-coloured rim painted under each glyph. The line sits on top of both. */
-  .glyphs {
-    position: relative;
-    z-index: 1;
-    display: inline-block;
-    margin-left: var(--hang);
-    -webkit-text-stroke: 0.08em var(--ground);
-    paint-order: stroke fill;
-  }
-
-  .name::after {
-    content: '';
-    position: absolute;
-    inset-inline: 0;
-    z-index: 2;
-    top: var(--matra-line-top);
-    height: var(--matra-line-height);
-    background: currentColor;
-    transform-origin: left center;
-  }
-
-  .cols {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    column-gap: var(--gutter);
-    margin-top: var(--below-name);
-  }
-
-  .cols li {
-    position: relative;
-  }
-
-  /* Each stem drops from the bottom of the line to the foot of its column. */
-  .cols li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: calc(-1 * (var(--name-size) * (1 - var(--matra-bottom-ratio)) + var(--below-name)));
-    bottom: 0;
-    width: var(--stem);
-    background: var(--green);
-    transform-origin: top center;
-    transition: width 220ms var(--ease-out);
-  }
-
-  /* The root of each stem sits above the letters so the knockout rim never parts it from the line. */
-  .cols li::after {
-    content: '';
-    position: absolute;
-    z-index: 2;
-    left: 0;
-    top: calc(-1 * (var(--name-size) * (1 - var(--matra-bottom-ratio)) + var(--below-name)));
-    height: calc(var(--name-size) * 0.08);
-    width: var(--stem);
-    background: var(--green);
-    transform-origin: top center;
-    transition: width 220ms var(--ease-out);
-  }
-
-  .cols li:hover::before,
-  .cols li:hover::after,
-  .cols li:focus-within::before,
-  .cols li:focus-within::after {
-    width: 4px;
-  }
-
-  .cols a {
-    display: grid;
-    gap: 2px;
-    padding: 0 8px 4px 18px;
-    text-decoration: none;
-  }
-
-  .org {
-    font-size: var(--fs-title);
-    font-weight: 600;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-  }
-
-  .years {
-    font-size: var(--fs-small);
-    color: var(--ink-3);
-  }
-
-  .line {
-    margin-top: 10px;
-    max-width: 30ch;
+  .lede {
+    max-width: 62ch;
+    margin-top: clamp(16px, 2.2vh, 28px);
+    font-size: var(--fs-lede);
+    line-height: 1.35;
     color: var(--ink-2);
-    line-height: 1.45;
     text-wrap: pretty;
   }
 
-  @media (prefers-reduced-motion: no-preference) {
-    .glyphs {
-      animation: hang-in 700ms var(--ease-out) both;
-    }
-
-    .name::after {
-      animation: draw 1200ms var(--ease-out) 380ms both;
-    }
-
-    .cols li::before,
-    .cols li::after {
-      animation: drop 800ms var(--ease-out) calc(900ms + var(--i) * 90ms) both;
-    }
+  .hero :global(.timeline) {
+    margin-top: clamp(8px, 2vh, 24px);
   }
 
-  @keyframes hang-in {
-    from {
-      opacity: 0;
-      transform: translateY(-0.05em);
-    }
-  }
-
-  @keyframes draw {
-    from {
-      transform: scaleX(0);
-    }
-  }
-
-  @keyframes drop {
-    from {
-      transform: scaleY(0);
-    }
-  }
-
-  @media (max-width: 1080px) {
-    .cols {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      row-gap: 40px;
-    }
-
-    .cols li:nth-child(n + 3)::before {
-      top: -40px;
-    }
-
-    .cols li:nth-child(n + 3)::after {
-      display: none;
-    }
-  }
-
-  @media (max-width: 860px) {
-    .lede,
-    .actions {
-      grid-column: 1 / -1;
-      justify-self: start;
-    }
-
-    .actions {
-      padding-top: 0;
-    }
-  }
-
-  @media (max-width: 560px) {
-    .cols {
-      grid-template-columns: minmax(0, 1fr);
-      row-gap: 28px;
-    }
-
-    .cols li:nth-child(n + 2)::before {
-      top: -28px;
-    }
-
-    .cols li:nth-child(n + 2)::after {
-      display: none;
+  @media (max-width: 640px) {
+    .hero :global(.timeline) {
+      margin-top: 36px;
     }
   }
 </style>
