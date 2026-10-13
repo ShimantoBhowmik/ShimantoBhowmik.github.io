@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionHead from '../components/SectionHead.astro';
+import { person } from '../data/profile';
+---
+
+<Base title={`Not found · ${person.name}`}>
+  <main class="page missing">
+    <SectionHead id="missing" en="Nothing hangs here" bn="নেই" />
+    <div class="grid">
+      <p class="content">
+        This page doesn’t exist. <a href="/">Go back to {person.name}</a>.
+      </p>
+    </div>
+  </main>
+</Base>
+
+<style>
+  .missing {
+    padding-top: clamp(96px, 22vh, 240px);
+  }
+
+  .missing .grid {
+    margin-top: 40px;
+    color: var(--ink-2);
+  }
+
+  .missing a {
+    color: var(--ink);
+    font-weight: 600;
+    text-decoration-color: var(--green);
+  }
+</style>

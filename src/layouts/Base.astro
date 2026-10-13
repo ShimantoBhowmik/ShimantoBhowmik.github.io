@@ -1,0 +1,43 @@
+---
+import '@fontsource-variable/anek-latin/wght.css';
+import '../styles/global.css';
+import latinFont from '@fontsource-variable/anek-latin/files/anek-latin-latin-wght-normal.woff2?url';
+import banglaFont from '../fonts/anek-bangla-subset.woff2?url';
+import { person } from '../data/profile';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = person.name, description = person.description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL('/og.png', Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f2f4f4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0d1210" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preload" href={latinFont} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={banglaFont} as="font" type="font/woff2" crossorigin />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
