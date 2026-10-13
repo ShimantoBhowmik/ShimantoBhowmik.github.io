@@ -48,10 +48,10 @@ export const person = {
   nameBn: 'সীমান্ত ভৌমিক',
   location: 'Seattle',
   email: 'bhowmikshimanto@gmail.com',
-  statement: 'I build the infrastructure machine learning ships on.',
-  lede: 'Experimentation platforms, model release pipelines and LLM evaluation, from Amazon AGI and Stanford AI Lab to security at AWS today.',
+  statement: 'I build the systems that ship software and move data.',
+  lede: 'At AWS Security, that’s the software on the cameras in AWS data centers and the live video they stream. Before that: Alexa+ experimentation and model releases at Amazon AGI.',
   description:
-    'Shimanto Bhowmik builds the infrastructure machine learning ships on: experimentation platforms, release pipelines and model evaluation. Seattle.',
+    'Shimanto Bhowmik builds the systems that ship software and move data: camera software and live video for AWS data center security, and Alexa+ experimentation and model releases at Amazon AGI. Seattle.',
 };
 
 export const links = {
@@ -95,7 +95,9 @@ export const work: Place[] = [
     stints: [
       {
         years: '2026 – now',
-        focus: 'AWS Security',
+        focus: 'Data center security cameras',
+        detail:
+          'Deploying the software that runs on the security cameras in AWS data centers, and streaming their video live.',
         results: [],
       },
     ],

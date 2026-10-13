@@ -210,10 +210,10 @@ Cool paper, green-tinted near-black ink in three strengths, and one bottle green
 **Character:** One superfamily in two scripts. The Bangla is green and structural, large in section heads and small as the signature beside the name; the Latin is semibold for names and the one hero statement and regular for prose, so beyond that statement the line does the shouting.
 
 ### Hierarchy
-- **Statement** (Latin 600, `clamp(2.5rem, min(5.4vw, 8.6vh), 5.5rem)`, line-height 1.02, -0.025em, max 19ch, balanced): the hero's one sentence of what he does, Ink. The largest type on the page; the vh term keeps the first screen whole on short laptops.
+- **Statement** (Latin 600, `clamp(2.5rem, min(5.4vw, 8.6vh), 5.5rem)`, line-height 1.02, -0.025em, max 30ch, balanced): the hero's one sentence of what he does, Ink. The largest type on the page; the vh term keeps the first screen whole on short laptops.
 - **Headline** (Bangla 600, `--sh-size`, line-height 1): the Bangla word of each section head, green, in the rail. Sized from the rail so the widest word (যোগাযোগ, 4.2em) always fits; on narrow screens `clamp(2.5rem, 10vw, 3.75rem)`.
 - **Headline Latin** (600, sized from the content column, line-height 1.1, -0.02em): the contact email address only, sized so it never breaks.
-- **Lede** (400, fluid 1.25-1.75rem, line-height 1.35, max 62ch, pretty wrap): the hero's supporting sentence under the statement, Ink Two.
+- **Lede** (400, fluid 1.25-1.75rem, line-height 1.35, max 62ch, balanced): the hero's supporting sentence under the statement, Ink Two.
 - **Name** (Latin 650, 1.25rem, line-height 1.2, -0.005em): the h1 in the hero bar, Ink.
 - **Signature** (Bangla 600, 1.375rem): the Bangla name set beside the h1 on its baseline, 14px after it, Bottle Green.
 - **Title** (600, fluid 1.375-1.75rem, line-height 1.2, -0.01em): place names, English section titles.
