@@ -173,7 +173,7 @@ One horizontal line, the matra, crosses the page and everything hangs from it, t
 
 The world is light only, flat, cool paper and near-black ink with one bottle green (Bangladesh flag green) that owns every structural line. Type and line carry every value: there are no cards, icons, photographs, shadows or gradients, and there is no depth at all. Density is moderate and editorial; results are set as figures on a strict tabular column, never as badges.
 
-Motion is the line being drawn: on load the timeline track draws left to right at a constant speed, once, and each stop arrives as the line reaches it. Reading an entry thickens the stretch of stem beside it.
+Motion is the line being drawn, in one grammar across the page: a line draws, then things arrive as the line reaches them. On load the hero's statement and then its lede arrive, then the timeline track draws left to right at a constant speed and each stop arrives as the line reaches it. Below the hero each part plays once as it crosses a line 20% above the bottom of the screen: a section's matra draws across, its stem drops, and its blocks rise in. Every motion plays once and ends; nothing is tied to scroll position. Reading an entry thickens the stretch of stem beside it.
 
 **Key Characteristics:**
 - One green, used only for structural lines, the Bangla words those lines belong to, and emphasis underlines.
@@ -271,16 +271,16 @@ Underlined text, never buttons.
 - **Focus:** 2px Bottle Green outline, 3px offset, 2px radius.
 
 ### Hero Bar
-The name (Name style) with the Bangla signature beside it at the left; a single row of four text links at the right (Email me, Resume, GitHub, LinkedIn), 500 weight, 28px apart, Email me emphasised. When space runs out the links wrap below the name, left-aligned. No header chrome, no background, no menu.
+The name (Name style) with the Bangla signature beside it at the left; a single row of five text links at the right (Email me, Resume, Scholar, GitHub, LinkedIn), 500 weight, 28px apart, Email me emphasised. When space runs out the links wrap below the name, left-aligned. No header chrome, no background, no menu.
 
 ### Hero Statement
-The Statement sentence in Ink, then the Lede in Ink Two. No green, no line; the timeline below supplies the hero's one line.
+The Statement sentence in Ink, then the Lede in Ink Two. No green, no line; the timeline below supplies the hero's one line. On load (no reduced-motion preference) each arrives with the `arrive` keyframe, from opacity 0 and 24px down to rest: the statement over 800ms ease-out after 80ms, the lede over 800ms after 260ms, both filling backwards, before the timeline starts to draw.
 
 ### Section Head (signature)
-The section's Bangla word sits green in the rail at `--sh-size`; its headstroke is extended edge to edge as the section's matra. The English title (Title style, Ink) sits in the content column just below the band. The section stem hangs from this matra.
+The section's Bangla word sits green in the rail at `--sh-size`; its headstroke is extended edge to edge as the section's matra. The English title (Title style, Ink) sits in the content column just below the band. The section stem hangs from this matra. On reveal the matra draws across from the left (scale, 900ms ease-out), the stem drops from the top (scale, 1400ms ease-out after 250ms), and the Bangla word and English title each rise in as reveal blocks.
 
 ### Entry
-A place: name and "years · location" in the rail; one or more stints in the content. Each stint shows its focus line (prefixed with green tabular years when a place has several stints), an optional citation, a detail paragraph, results as figures over labels, and an optional green-underlined link. On hover or focus-within, the stretch of section stem beside the entry thickens from 1.5px to 4px (scaleX, 220ms, `cubic-bezier(0.16, 1, 0.3, 1)`).
+A place: name and "years · location" in the rail; one or more stints in the content. Each stint shows its focus line (prefixed with green tabular years when a place has several stints), an optional citation, a detail paragraph, results as figures over labels, and an optional green-underlined link. On hover or focus-within, the stretch of section stem beside the entry thickens from 1.5px to 4px (scaleX, 220ms, `cubic-bezier(0.16, 1, 0.3, 1)`). Each entry rises in once as a reveal block.
 
 ### Result Figure
 Value-style tabular figure stacked above an Ink Three label, laid out in a wrapping row with 28-56px between results. No box, no badge.
@@ -296,8 +296,16 @@ A transit strip map of the career, oldest stop first, closing the hero at full p
 - **Branches:** a longer stint that ran alongside other work hangs under the track to its end date as a 6px Soft Green left and bottom border with a 16px elbow radius.
 - **Years:** a Label-size tabular year scale in Ink Three below the track, each year starting at its January.
 - **Hover / Focus:** the dot fills Bottle Green and its name turns green over 160ms. Each stop links to its entry.
-- **Load motion (signature; CSS only, 641px and wider, only with no reduced-motion preference):** the track draws left to right at constant speed (linear, `--draw` 1600ms after `--draw-delay` 250ms). Each stop fades and rises 6px into place (420ms, ease-out) when the line reaches it: delay = draw-delay + t x draw, where t is the stop's position 0-1 on the track. The year scale fades in (600ms) when the draw ends. Without motion everything is simply present.
+- **Load motion (signature; CSS only, 641px and wider, only with no reduced-motion preference):** the track draws left to right at constant speed (linear, `--draw` 1600ms after `--draw-delay` 620ms, so it starts once the statement and lede have arrived). Each stop fades and rises 6px into place (420ms, ease-out) when the line reaches it: delay = draw-delay + t x draw, where t is the stop's position 0-1 on the track. The year scale fades in (600ms) when the draw ends. Without motion everything is simply present.
 - **Phones (640px and below):** the track turns vertical at the left as the timeline's own 1.5px square stem, content indented `hang` beside it, newest first: small dots (14px, 3px ring; the current one 20px, 6px ring) sit on the stem, names at Stop size with years inline in Ink Three, 18px between stops. Branches and year scale are hidden; no load motion.
+
+### Reveal (motion)
+How everything below the hero arrives. A head script adds `reveal-ready` to the root only when IntersectionObserver exists and motion is not reduced; a few lines of inline script at the end of the body observe reveal blocks, sections and section heads with the trigger line 20% above the bottom of the screen (root margin `0 0 -20% 0`), mark each one in once, and stop observing it. The hide rules apply on screens only, so print, no script and reduced motion all get the full static page.
+- **Matra:** draws across from the left, scale 0 to 1 over 900ms ease-out.
+- **Stem:** drops from the top, scale 0 to 1 over 1400ms ease-out after 250ms, so it hangs from a matra already drawn.
+- **Blocks:** entries, projects, smaller-things rows, ledger rows, sub-headings, the section word and title, the contact email and the contact links each rise in from opacity 0 and 24px down over 700ms ease-out (opacity and translate).
+
+**The One-Off Motion Rule.** Motion is a transition or animation that plays once and ends, so every compositor layer it promotes is released. No persistent animations, no scroll-linked or scroll-driven animations: they hold a layer per element for the life of the page. After a full scroll the page holds 2 drawn layers, the same as the static page; keep it there.
 
 ## Do's and Don'ts
 
@@ -309,6 +317,7 @@ A transit strip map of the career, oldest stop first, closing the hero at full p
 - **Do** show each place by organisation, years and the work done, with its measured result as a figure.
 - **Do** draw the timeline at one true time scale ending at the build month, and keep the monthly rebuild that moves its end to today.
 - **Do** keep the timeline's load motion tied to the line: a constant-speed draw, each stop arriving when the line reaches its position, and full content without motion.
+- **Do** keep every motion in the one grammar: a line draws, then things arrive as the line reaches them, each playing once, with the full static page when motion is reduced, unscripted or printed.
 
 ### Don't:
 - **Don't** use grey dividers, borders or hairlines between items; separate with space.
@@ -317,3 +326,5 @@ A transit strip map of the career, oldest stop first, closing the hero at full p
 - **Don't** add a dark scheme or `prefers-color-scheme` styles; the site is light only.
 - **Don't** add a third type family or set Latin in the Bangla face.
 - **Don't** show job titles anywhere in content.
+- **Don't** use arrow glyphs or other symbols as typographic decoration; write the words ("days to minutes").
+- **Don't** add persistent, looping, or scroll-linked animations; every motion is a one-off transition that ends.

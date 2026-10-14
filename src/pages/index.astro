@@ -46,7 +46,7 @@ const year = new Date().getFullYear();
         <div class="grid">
           <ul class="content projects">
             {projects.map((project) => (
-              <li class="project">
+              <li class="project reveal">
                 <h3 class="project-name">
                   {project.links[0] ? (
                     <a href={project.links[0].href}>{project.name}</a>
@@ -68,10 +68,10 @@ const year = new Date().getFullYear();
           </ul>
 
           <div class="content smaller">
-            <h3 class="sub">Smaller things</h3>
+            <h3 class="sub reveal">Smaller things</h3>
             <ul>
               {smallProjects.map((project) => (
-                <li class="small">
+                <li class="small reveal">
                   <span class="small-name">
                     {project.links[0] ? (
                       <a href={project.links[0].href}>{project.name}</a>
@@ -93,10 +93,10 @@ const year = new Date().getFullYear();
         <div class="grid">
           <div class="content recognition">
             <div>
-              <h3 class="sub">Awards</h3>
+              <h3 class="sub reveal">Awards</h3>
               <ul class="ledger">
                 {awards.map((award) => (
-                  <li>
+                  <li class="reveal">
                     <span class="ledger-years num">{award.years}</span>
                     <span>
                       {award.name}
@@ -108,10 +108,10 @@ const year = new Date().getFullYear();
               </ul>
             </div>
             <div>
-              <h3 class="sub">Background</h3>
+              <h3 class="sub reveal">Background</h3>
               <ul class="ledger">
                 {background.map((item) => (
-                  <li>
+                  <li class="reveal">
                     <span class="ledger-years num">{item.years}</span>
                     <span>{item.line}</span>
                   </li>
@@ -126,12 +126,15 @@ const year = new Date().getFullYear();
         <SectionHead id="contact" {...sections.contact} />
         <div class="grid">
           <div class="content">
-            <a class="email" href={`mailto:${person.email}`}>
+            <a class="email reveal" href={`mailto:${person.email}`}>
               {person.email}
             </a>
-            <ul class="elsewhere">
+            <ul class="elsewhere reveal">
               <li>
                 <a href={links.resume}>Resume (PDF)</a>
+              </li>
+              <li>
+                <a href={links.scholar}>Google Scholar</a>
               </li>
               <li>
                 <a href={links.github}>GitHub</a>

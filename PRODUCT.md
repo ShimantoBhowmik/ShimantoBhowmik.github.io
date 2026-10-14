@@ -12,7 +12,7 @@ Astro, static output, deployed to GitHub Pages (`gh-pages` branch `master` serve
 
 ## Purpose
 
-Personal website of Shimanto Bhowmik, a software engineer in Seattle. It is a permanent home for who he is and what he has built, written so it reads as the site of a mid-level engineer, not a student or intern.
+Personal website of Shimanto Bhowmik, a software engineer in Arlington, VA. It is a permanent home for who he is and what he has built, written so it reads as the site of a mid-level engineer, not a student or intern.
 
 ## Audience
 
@@ -27,7 +27,8 @@ Engineers, hiring managers, recruiters, and collaborators who arrive from a resu
 ## Brand commitments
 
 - **No job titles anywhere.** Do not show role titles such as "Intern", "Research Assistant", or "Software Engineer". Present each place by organization, dates, and the work done. The overall impression must be a mid-level engineer.
-- The site must be his own and original: no navy/teal developer-portfolio look, mono-numbered headings, loaders, side email rails or scroll reveals.
+- The site must be his own and original: no navy/teal developer-portfolio look, mono-numbered headings, loaders or side email rails.
+- Motion (user-requested): content arrives as the reader scrolls to it, in the site's own grammar (a line draws, then things arrive as the line reaches them). Generic fade-up-everything reveals are not the intent.
 - Minimal by preference.
 
 ## Content to carry
