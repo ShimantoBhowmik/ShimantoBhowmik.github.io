@@ -73,7 +73,7 @@ for (let y = Number(timeline[0].start.slice(0, 4)); y <= today.getFullYear(); y+
     --track: 10px;
     --green-soft: color-mix(in oklab, var(--green) 32%, var(--ground));
     --draw: 1600ms;
-    --draw-delay: 250ms;
+    --draw-delay: 620ms;
     padding-top: 150px;
     margin-right: clamp(56px, 7vw, 110px);
   }
@@ -224,7 +224,7 @@ for (let y = Number(timeline[0].start.slice(0, 4)); y <= today.getFullYear(); y+
      each stop arrives as the line reaches it. Everything is visible without it. Keyframes define
      only a `from` state, so `backwards` looks the same as `both` but lets each animation end and
      release its compositor layer. */
-  @media (prefers-reduced-motion: no-preference) and (min-width: 641px) {
+  @media screen and (prefers-reduced-motion: no-preference) and (min-width: 641px) {
     .stops::before {
       transform-origin: left center;
       animation: track-draw var(--draw) linear var(--draw-delay) backwards;
