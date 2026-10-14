@@ -50,8 +50,11 @@ export const person = {
   email: 'bhowmikshimanto@gmail.com',
   statement: 'I build the systems that ship software and move data.',
   lede: 'At AWS Security, that’s the software on the cameras in AWS data centers and the live video they stream. Before that: Alexa+ experimentation and model releases at Amazon AGI.',
+  /** Follows the name in the browser tab and the search result title. */
+  tagline: 'AWS Security and Amazon AGI',
+  // Search results cut descriptions near 160 characters.
   description:
-    'Shimanto Bhowmik builds the systems that ship software and move data: camera software and live video for AWS data center security, and Alexa+ experimentation and model releases at Amazon AGI. Arlington, VA.',
+    'Shimanto Bhowmik builds the systems that ship software and move data: camera software and live video for AWS Security, and Alexa+ experimentation at Amazon AGI.',
 };
 
 export const links = {
