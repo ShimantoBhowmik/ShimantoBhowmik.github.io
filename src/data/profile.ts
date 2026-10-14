@@ -81,7 +81,7 @@ export const timeline: Stop[] = [
   { id: 'sage-ai', label: 'Sage AI', start: '2023-09', end: '2024-05', branch: true },
   { id: 'amazon-agi', label: 'Amazon AGI', start: '2024-05', end: '2024-09' },
   { id: 'stanford', label: 'Stanford AI Lab', start: '2024-09', end: '2025-05', branch: true },
-  { id: 'amazon-agi', label: 'Amazon AGI · Alexa+', start: '2025-05', end: '2025-08' },
+  { id: 'amazon-agi', label: 'Amazon AGI', start: '2025-05', end: '2025-08' },
   { id: 'finpilot', label: 'FinPilot', start: '2026-01', end: '2026-04' },
   { id: 'aws', label: 'AWS Security', start: '2026-04' },
 ];
