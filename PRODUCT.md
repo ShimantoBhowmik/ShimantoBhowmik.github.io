@@ -20,7 +20,7 @@ Engineers, hiring managers, recruiters, and collaborators who arrive from a resu
 
 ## Positioning
 
-- Builds production systems at the seam of infrastructure and ML: experimentation platforms, model release pipelines, data sync engines, LLM evaluation.
+- Builds the systems that ship software and move data: deployment and live video streaming for the security cameras in AWS data centers (current), model release pipelines and Alexa+ experimentation routing (Amazon AGI), CRM data sync (FinPilot), SEC filings ingestion (Sage AI). LLM evaluation research at Stanford AI Lab sits alongside.
 - Track record: Amazon Web Services (AWS Security, current), FinPilot, Amazon AGI (Alexa+ experimentation, model release pipeline, LLM evaluation), Stanford AI Lab (Bengali LLM evaluation research), Sage AI, RIT research.
 - Published (first author): "Script Fragmentation and Format: What Drives the English-Bengali Performance Gap in Open LLMs?" (arXiv 2507.23248, v2). The resume still carries the earlier title "Evaluating LLMs' Multilingual Capabilities for Bengali"; the site follows arXiv.
 
