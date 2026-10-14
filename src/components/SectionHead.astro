@@ -9,10 +9,10 @@ const { id, en, bn } = Astro.props;
 ---
 
 <header class="sh grid">
-  <span class="sh-bn rail" lang="bn" aria-hidden="true">
+  <span class="sh-bn rail reveal" lang="bn" aria-hidden="true">
     {bn}
   </span>
-  <h2 class="sh-en content" id={id}>
+  <h2 class="sh-en content reveal" id={id}>
     {en}
   </h2>
 </header>
@@ -51,6 +51,18 @@ const { id, en, bn } = Astro.props;
     line-height: 1.2;
     letter-spacing: -0.01em;
     scroll-margin-top: 24px;
+  }
+
+  /* The section's line draws across once as its head comes into view (observer in Base.astro). */
+  @media screen and (prefers-reduced-motion: no-preference) {
+    :global(.reveal-ready) .sh::before {
+      transform-origin: left center;
+      transition: scale 900ms var(--ease-out);
+    }
+
+    :global(.reveal-ready) .sh:not(:global(.is-in))::before {
+      scale: 0 1;
+    }
   }
 
   /* One axis on phones too: the word, then its title, both hanging right of the stem. */

@@ -34,8 +34,34 @@ const ogImage = new URL('/og.png', Astro.site);
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
+    <script is:inline>
+      // Hide .reveal blocks only when they will be revealed: motion allowed and an observer exists.
+      if (
+        'IntersectionObserver' in window &&
+        matchMedia('(prefers-reduced-motion: no-preference)').matches
+      ) {
+        document.documentElement.classList.add('reveal-ready');
+      }
+    </script>
   </head>
   <body>
     <slot />
+    <script is:inline>
+      // Section lines, stems and .reveal blocks each play once, when they cross a line 20% above
+      // the bottom of the screen.
+      if (document.documentElement.classList.contains('reveal-ready')) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (!entry.isIntersecting) continue;
+              entry.target.classList.add('is-in');
+              observer.unobserve(entry.target);
+            }
+          },
+          { rootMargin: '0px 0px -20% 0px' },
+        );
+        document.querySelectorAll('.reveal, .section, .sh').forEach((el) => observer.observe(el));
+      }
+    </script>
   </body>
 </html>

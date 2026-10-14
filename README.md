@@ -1,6 +1,7 @@
 # shimantobhowmik.github.io
 
-Personal website, built with [Astro](https://astro.build). Static output, no client JavaScript.
+Personal website, built with [Astro](https://astro.build). Static output; the only client JavaScript
+is a few inline lines that reveal content as it scrolls into view.
 
 ## Editing content
 
@@ -32,7 +33,7 @@ Pushing to `mainline` builds and deploys through GitHub Actions
 ([`.github/workflows/site.yml`](.github/workflows/site.yml)). Pull requests run the same checks
 without deploying.
 
-One-time setup: in the repository's **Settings → Pages**, set **Source** to **GitHub Actions**.
+One-time setup: in the repository's **Settings**, then **Pages**, set **Source** to **GitHub Actions**.
 
 ## Images
 

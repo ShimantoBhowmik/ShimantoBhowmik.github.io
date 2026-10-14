@@ -46,18 +46,19 @@ interface Award {
 export const person = {
   name: 'Shimanto Bhowmik',
   nameBn: 'সীমান্ত ভৌমিক',
-  location: 'Seattle',
+  location: 'Arlington, VA',
   email: 'bhowmikshimanto@gmail.com',
   statement: 'I build the systems that ship software and move data.',
   lede: 'At AWS Security, that’s the software on the cameras in AWS data centers and the live video they stream. Before that: Alexa+ experimentation and model releases at Amazon AGI.',
   description:
-    'Shimanto Bhowmik builds the systems that ship software and move data: camera software and live video for AWS data center security, and Alexa+ experimentation and model releases at Amazon AGI. Seattle.',
+    'Shimanto Bhowmik builds the systems that ship software and move data: camera software and live video for AWS data center security, and Alexa+ experimentation and model releases at Amazon AGI. Arlington, VA.',
 };
 
 export const links = {
   resume: '/resume.pdf',
   github: 'https://github.com/ShimantoBhowmik',
   linkedin: 'https://www.linkedin.com/in/shimantobhowmik',
+  scholar: 'https://scholar.google.com/citations?user=a3Vfg2EAAAAJ',
   youtube: 'https://www.youtube.com/@scarstark',
 };
 
@@ -89,7 +90,7 @@ export const work: Place[] = [
   {
     id: 'aws',
     org: 'Amazon Web Services',
-    location: 'Seattle',
+    location: 'Arlington, VA',
     years: '2026 – now',
     href: 'https://aws.amazon.com/security/',
     stints: [
@@ -133,7 +134,7 @@ export const work: Place[] = [
         detail:
           'Built parallel experimentation for Alexa+ with traffic splitting and consistent hashing in Kotlin and Guava, then moved the platform from single-lane to multi-tenant with deterministic identity routing and isolation guardrails.',
         results: [
-          { value: 'days → minutes', label: 'experiment turnaround' },
+          { value: 'days to minutes', label: 'experiment turnaround' },
           { value: '+60%', label: 'experiment accuracy' },
         ],
       },
