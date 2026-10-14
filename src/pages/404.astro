@@ -4,7 +4,7 @@ import SectionHead from '../components/SectionHead.astro';
 import { person } from '../data/profile';
 ---
 
-<Base title={`Not found · ${person.name}`}>
+<Base title={`Not found · ${person.name}`} noindex>
   <main class="page missing">
     <SectionHead id="missing" en="Nothing hangs here" bn="নেই" />
     <div class="grid">
