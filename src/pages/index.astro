@@ -16,9 +16,65 @@ import {
 } from '../data/profile';
 
 const year = new Date().getFullYear();
+
+const home = new URL('/', Astro.site).href;
+const personId = `${home}#person`;
+// One Person, linked to every profile elsewhere, so search engines treat this page as its home.
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${home}#website`,
+      url: home,
+      name: person.name,
+      alternateName: [person.nameBn, new URL(home).host],
+      inLanguage: 'en',
+      publisher: { '@id': personId },
+    },
+    {
+      '@type': 'ProfilePage',
+      '@id': `${home}#profile`,
+      url: home,
+      name: person.name,
+      description: person.description,
+      isPartOf: { '@id': `${home}#website` },
+      mainEntity: { '@id': personId },
+    },
+    {
+      '@type': 'Person',
+      '@id': personId,
+      name: person.name,
+      alternateName: person.nameBn,
+      url: home,
+      email: `mailto:${person.email}`,
+      description: person.description,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Arlington',
+        addressRegion: 'VA',
+        addressCountry: 'US',
+      },
+      worksFor: { '@type': 'Organization', name: work[0].org, url: work[0].href },
+      alumniOf: {
+        '@type': 'CollegeOrUniversity',
+        name: 'Rochester Institute of Technology',
+        url: 'https://www.rit.edu/',
+      },
+      knowsAbout: [
+        'Distributed systems',
+        'Experimentation platforms',
+        'Live video streaming',
+        'LLM evaluation',
+        'Bengali natural language processing',
+      ],
+      sameAs: [links.linkedin, links.github, links.scholar, links.youtube],
+    },
+  ],
+};
 ---
 
-<Base>
+<Base structuredData={structuredData}>
   <div class="page">
     <Hero />
 
