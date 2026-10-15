@@ -61,6 +61,11 @@ typography:
     fontSize: "1.0625rem"
     fontWeight: 400
     lineHeight: 1.55
+  focus:
+    fontFamily: "Anek Latin Variable, system-ui, sans-serif"
+    fontSize: "1.1875rem"
+    fontWeight: 600
+    lineHeight: 1.3
   label:
     fontFamily: "Anek Latin Variable, system-ui, sans-serif"
     fontSize: "0.875rem"
@@ -187,12 +192,12 @@ Motion is the line being drawn, in one grammar across the page: a line draws, th
 Cool paper, green-tinted near-black ink in three strengths, and one bottle green that is structure, not decoration. Light only: one palette, `color-scheme: light`, and the browser theme colour is Cool Paper. There is no dark scheme. (The favicon alone keeps a lighter green for dark browser tab bars; that adapts to the browser chrome, not to the site.)
 
 ### Primary
-- **Bottle Green** (`green`): the matra lines, the stems, the section words, the Bangla signature beside the name, the emphasised link underline, the hover underline of every link, focus outlines, text selection background, the per-stint years inside an entry, the timeline's track, its NOW tag, and a timeline stop's fill and name on hover or focus. Nothing else.
+- **Bottle Green** (`green`): the matra lines, the stems, the section words, the Bangla signature beside the name, the emphasised link underline, the hover underline of every link, focus outlines, text selection background, the per-stint years inside an entry, the timeline's track, its NOW tag, a timeline stop's fill and name on hover or focus, and an entry's stint stops while the entry is hovered or focused. Nothing else.
 - **Soft Green** (`green-soft`, 32% Bottle Green mixed into Cool Paper in oklab): the timeline's branches only, so a concurrent stint reads as a spur off the line rather than a second line.
 
 ### Neutral
 - **Cool Paper** (`ground`): the only background, and the fill of a resting timeline stop.
-- **Ink** (`ink`): the name in the hero bar, the hero statement, names of places, titles, result figures, the contact address, timeline stop names and the rings of its stops.
+- **Ink** (`ink`): the name in the hero bar, the hero statement, names of places, titles, result figures, the contact address, timeline stop names, the rings of its stops, and the rings of the stint stops on a section stem.
 - **Ink Two** (`ink-2`): running prose: the lede, detail paragraphs, summaries, notes.
 - **Ink Three** (`ink-3`): metadata: years, locations, result labels, stacks, sub-labels, footer, the timeline's year scale.
 - **Rule Grey** (`rule`): the resting underline of ordinary links and the scrollbar thumb. It is never a divider.
@@ -233,7 +238,7 @@ Cool paper, green-tinted near-black ink in three strengths, and one bottle green
 
 ## Layout
 
-One 12-column grid inside page padding (`pad`, 16-96px) with a fluid `gutter` (16-32px). Columns 1-3 are the **rail**, holding what hangs at the left of each line (the Bangla section word, place name, years, location). Columns 4-12 are the **content**, holding everything read. At 860px and below the rail and content stack to full width and the section stem moves to the page edge.
+One 12-column grid inside page padding (`pad`, 16-96px) with a fluid `gutter` (16-32px). Columns 1-3 are the **rail**, holding what hangs at the left of each line (the Bangla section word, place name, location). Columns 4-12 are the **content**, holding everything read. At 860px and below the rail and content stack to full width and the section stem moves to the page edge.
 
 Sections open with `section-gap` (104-176px) above the section head. Entries within a section are padded 28-44px top and bottom, first entry flush. Items in lists are separated by 8px of padding, never by a line.
 
@@ -280,7 +285,7 @@ The Statement sentence in Ink, then the Lede in Ink Two. No green, no line; the 
 The section's Bangla word sits green in the rail at `--sh-size`; its headstroke is extended edge to edge as the section's matra. The English title (Title style, Ink) sits in the content column just below the band. The section stem hangs from this matra. On reveal the matra draws across from the left (scale, 900ms ease-out), the stem drops from the top (scale, 1400ms ease-out after 250ms), and the Bangla word and English title each rise in as reveal blocks.
 
 ### Entry
-A place: name and "years · location" in the rail; one or more stints in the content. Each stint shows its focus line (prefixed with green tabular years when a place has several stints), an optional citation, a detail paragraph, results as figures over labels, and an optional green-underlined link. On hover or focus-within, the stretch of section stem beside the entry thickens from 1.5px to 4px (scaleX, 220ms, `cubic-bezier(0.16, 1, 0.3, 1)`). Each entry rises in once as a reveal block.
+A place: name and location in the rail; one or more stints in the content. Each stint is a stop on the section stem, drawn like the phone timeline's stops (Cool Paper dot, Ink ring, 14px with a 3px ring), centred on the stem at the first line of the stint's focus line. Beside the stem, the stint's green tabular years sit in the Ledger's 6.5rem column, so every focus line, citation, detail paragraph, result row and link starts on one line after it. Each stint shows its focus line, an optional citation, a detail paragraph, results as figures over labels, and an optional green-underlined link. On hover or focus-within, the stretch of section stem beside the entry thickens from 1.5px to 4px (scaleX) and the entry's stops fill Bottle Green, both over 220ms, `cubic-bezier(0.16, 1, 0.3, 1)`. Phones (640px and below) have no room for the year column: the rail reads "years · location", and only a place with several stints prefixes each focus line with its years. Each entry rises in once as a reveal block.
 
 ### Result Figure
 Value-style tabular figure stacked above an Ink Three label, laid out in a wrapping row with 28-56px between results. No box, no badge.
