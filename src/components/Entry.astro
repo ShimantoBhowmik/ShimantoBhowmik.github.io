@@ -6,16 +6,23 @@ interface Props {
 }
 
 const { place } = Astro.props;
-const showStintYears = place.stints.length > 1;
+const solo = place.stints.length === 1;
 ---
 
-<article class="entry grid reveal" id={place.id} aria-labelledby={`${place.id}-org`}>
+<article
+  class:list={['entry grid reveal', { solo }]}
+  id={place.id}
+  aria-labelledby={`${place.id}-org`}
+>
   <header class="head rail">
     <h3 class="org" id={`${place.id}-org`}>
       {place.href ? <a href={place.href}>{place.org}</a> : place.org}
     </h3>
     <p class="meta">
-      <span class="num">{place.years}</span> · {place.location}
+      <span class="place-years">
+        <span class="num">{place.years}</span> ·{' '}
+      </span>
+      {place.location}
     </p>
   </header>
 
@@ -23,8 +30,8 @@ const showStintYears = place.stints.length > 1;
     {place.stints.map((stint) => (
       <section class="stint">
         <h4 class="focus">
-          {showStintYears && <span class="stint-years num">{stint.years}</span>}
-          {stint.focus}
+          <span class="stint-years num">{stint.years}</span>
+          <span class="focus-text">{stint.focus}</span>
         </h4>
         {stint.cite && <p class="cite">{stint.cite}</p>}
         {stint.detail && <p class="detail">{stint.detail}</p>}
@@ -105,20 +112,41 @@ const showStintYears = place.stints.length > 1;
     color: var(--ink-3);
   }
 
+  /* Years move out of the rail into each stint's year column. */
+  .place-years {
+    display: none;
+  }
+
   .body {
     display: grid;
     gap: clamp(28px, 3vw, 40px);
   }
 
-  .focus {
-    display: flex;
-    flex-wrap: wrap;
+  /* Every stint sets its years in one column beside the stem, so all titles start on one line,
+     the way the Recognition ledger sets its years. */
+  .stint {
+    display: grid;
+    grid-template-columns: 6.5rem minmax(0, 1fr);
+    column-gap: 12px;
+  }
+
+  .stint > * {
+    grid-column: 2;
+  }
+
+  .stint > .focus {
+    position: relative;
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 1 / -1;
     align-items: baseline;
-    column-gap: 14px;
-    max-width: 44ch;
     font-size: 1.1875rem;
     font-weight: 600;
     line-height: 1.3;
+  }
+
+  .focus-text {
+    max-width: 44ch;
     text-wrap: balance;
   }
 
@@ -126,6 +154,30 @@ const showStintYears = place.stints.length > 1;
     font-size: var(--fs-small);
     font-weight: 500;
     color: var(--green);
+  }
+
+  /* Each stint is a stop on the section stem, drawn like the timeline's stops on its phone stem. */
+  .focus::before {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    left: calc(-1 * var(--hang) + var(--stem) / 2 - 7px);
+    top: calc(0.65em - 7px);
+    width: 14px;
+    height: 14px;
+    box-sizing: border-box;
+    border: 3px solid var(--ink);
+    border-radius: 50%;
+    background: var(--ground);
+    transition:
+      border-color 220ms var(--ease-out),
+      background-color 220ms var(--ease-out);
+  }
+
+  .entry:hover .focus::before,
+  .entry:focus-within .focus::before {
+    border-color: var(--green);
+    background: var(--green);
   }
 
   .cite {
@@ -172,5 +224,30 @@ const showStintYears = place.stints.length > 1;
 
   .more a {
     text-decoration-color: var(--green);
+  }
+
+  /* Phones have no room for the year column: the place keeps its years in the rail, and only a
+     place with several stints labels each one inline. */
+  @media (max-width: 640px) {
+    .place-years {
+      display: inline;
+    }
+
+    .stint {
+      grid-template-columns: auto minmax(0, 1fr);
+      column-gap: 14px;
+    }
+
+    .stint > * {
+      grid-column: 1 / -1;
+    }
+
+    .solo .stint-years {
+      display: none;
+    }
+
+    .solo .focus-text {
+      grid-column: 1 / -1;
+    }
   }
 </style>
