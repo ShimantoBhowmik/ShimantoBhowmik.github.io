@@ -10,3 +10,6 @@ dist
 .impeccable/mocks/
 .impeccable/review/
 .impeccable/questions/
+
+# Product brief for the design tooling, kept local
+PRODUCT.md
