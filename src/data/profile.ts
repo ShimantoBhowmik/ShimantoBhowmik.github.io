@@ -49,7 +49,7 @@ export const person = {
   location: 'Arlington, VA',
   email: 'bhowmikshimanto@gmail.com',
   statement: 'I build the systems that ship software and move data.',
-  lede: 'At AWS Security, that’s shipping software to a fleet of edge devices and streaming their data in real time. Before that: Alexa+ experimentation and model releases at Amazon AGI.',
+  lede: 'At AWS Security, that’s shipping software to a fleet of edge devices and streaming their data in real time. Before AWS, I built Alexa+ experimentation and model releases at Amazon AGI.',
   /** Follows the name in the browser tab and the search result title. */
   tagline: 'AWS Security and Amazon AGI',
   // Search results cut descriptions near 160 characters.
