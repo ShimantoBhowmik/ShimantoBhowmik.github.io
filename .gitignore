@@ -13,3 +13,6 @@ dist
 
 # Product brief for the design tooling, kept local
 PRODUCT.md
+
+# Verification runs (see .claude/skills/verify)
+.verify/
